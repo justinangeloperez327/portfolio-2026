@@ -73,3 +73,11 @@ building and starting the production server.
 - SEO-friendly rendering and metadata
 - Minimal client-side JavaScript
 - Responsive, content-first UI
+
+
+## Maintenance
+
+Post-launch maintenance is documented in `docs/post-launch.md`. Dependency
+updates are reviewed weekly, while content, accessibility, performance, SEO,
+and production behavior are reviewed on a defined cadence. Updates are not
+auto-merged solely because a newer version is available.
