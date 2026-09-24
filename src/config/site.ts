@@ -1,3 +1,20 @@
+const normalizeSiteUrl = (value: string | undefined) => {
+  const candidate = value?.trim();
+  if (!candidate) return undefined;
+
+  if (candidate.startsWith("http://") || candidate.startsWith("https://")) {
+    return candidate;
+  }
+
+  return `https://${candidate}`;
+};
+
+const configuredSiteUrl = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
+const vercelProductionUrl = normalizeSiteUrl(
+  process.env.VERCEL_PROJECT_PRODUCTION_URL,
+);
+const vercelDeploymentUrl = normalizeSiteUrl(process.env.VERCEL_URL);
+
 export const siteConfig = {
   name: "Justin Angelo Perez",
   title: "Software Developer",
@@ -5,10 +22,10 @@ export const siteConfig = {
     "Software developer focused on frameworks, developer experience, web applications, and software architecture.",
   location: "Abu Dhabi, United Arab Emirates",
   url:
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    (process.env.VERCEL_PROJECT_PRODUCTION_URL
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      : "http://localhost:3000"),
+    configuredSiteUrl ??
+    vercelProductionUrl ??
+    vercelDeploymentUrl ??
+    "http://localhost:3000",
   locale: "en_AE",
   navigation: [
     { label: "Work", href: "/work" },
