@@ -1131,3 +1131,188 @@ p {
     position: static;
   }
 }
+
+
+/* Software blueprint system */
+.blueprint-frame {
+  margin: clamp(3rem, 6vw, 6rem) 0;
+  border: var(--border-hairline);
+  background:
+    linear-gradient(rgb(17 17 17 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(17 17 17 / 4%) 1px, transparent 1px);
+  background-color: var(--color-paper-warm);
+  background-size: 2rem 2rem;
+}
+
+.blueprint-frame__caption {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.75fr) minmax(0, 1fr);
+  gap: 0.5rem 2rem;
+  padding: 1rem;
+  border-bottom: var(--border-hairline);
+  background: var(--color-paper-warm);
+}
+
+.blueprint-frame__caption strong {
+  font-size: 0.9375rem;
+}
+
+.blueprint-frame__caption > :last-child:not(:nth-child(2)) {
+  grid-column: 2;
+  color: var(--color-ink-deep);
+  font-size: 0.8125rem;
+}
+
+.blueprint-frame__canvas {
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+
+.system-flow__nodes,
+.layer-diagram,
+.relationship-diagram ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.system-flow__nodes {
+  display: grid;
+  width: min(100%, 40rem);
+  margin-inline: auto;
+}
+
+.system-flow__node {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 1rem;
+  min-height: 5rem;
+  align-items: start;
+  padding: 1rem;
+  border: var(--border-hairline);
+  background: var(--color-paper-warm);
+}
+
+.system-flow__node + .system-flow__node {
+  margin-top: 2rem;
+}
+
+.system-flow__node strong,
+.system-flow__node div > span {
+  display: block;
+}
+
+.system-flow__node div > span {
+  margin-top: 0.35rem;
+  color: var(--color-ink-deep);
+  font-size: 0.8125rem;
+}
+
+.system-flow__index {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.625rem;
+}
+
+.system-flow__connector {
+  position: absolute;
+  bottom: -2rem;
+  left: 1.9rem;
+  height: 2rem;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+
+.layer-diagram {
+  display: grid;
+  width: min(100%, 52rem);
+  margin-inline: auto;
+}
+
+.layer-diagram li {
+  display: grid;
+  grid-template-columns: minmax(6rem, 0.5fr) minmax(8rem, 0.75fr) minmax(0, 1.5fr);
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1rem;
+  border: var(--border-hairline);
+  background: var(--color-paper-warm);
+}
+
+.layer-diagram li + li {
+  border-top: 0;
+}
+
+.layer-diagram p {
+  margin: 0;
+  color: var(--color-ink-deep);
+  font-size: 0.8125rem;
+}
+
+.relationship-diagram {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.relationship-diagram__nodes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+}
+
+.relationship-diagram__nodes li {
+  min-height: 6rem;
+  padding: 1rem;
+  border: var(--border-hairline);
+  background: var(--color-paper-warm);
+}
+
+.relationship-diagram__nodes strong,
+.relationship-diagram__nodes span {
+  display: block;
+}
+
+.relationship-diagram__nodes span {
+  margin-top: 0.5rem;
+  color: var(--color-ink-deep);
+  font-size: 0.75rem;
+}
+
+.relationship-diagram__connections {
+  display: grid;
+  border-top: var(--border-hairline);
+}
+
+.relationship-diagram__connections li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) minmax(5rem, auto);
+  gap: 0.75rem;
+  align-items: center;
+  padding-block: 0.75rem;
+  border-bottom: var(--border-hairline);
+  font-size: 0.75rem;
+}
+
+.relationship-diagram__connections em {
+  color: var(--color-ink-deep);
+  font-family: var(--font-serif);
+  text-align: right;
+}
+
+@media (max-width: 40rem) {
+  .blueprint-frame__caption,
+  .layer-diagram li {
+    grid-template-columns: 1fr;
+  }
+
+  .blueprint-frame__caption > :last-child:not(:nth-child(2)) {
+    grid-column: 1;
+  }
+
+  .relationship-diagram__connections li {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+
+  .relationship-diagram__connections em {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+}
