@@ -1,17 +1,13 @@
 type InkMarkProps = {
   className?: string;
-  label?: string;
 };
 
-export function InkMark({
-  className = "",
-  label = "Decorative ink brush mark",
-}: InkMarkProps) {
+export function InkMark({ className = "" }: InkMarkProps) {
   return (
     <svg
-      aria-label={label}
+      aria-hidden="true"
       className={className}
-      role="img"
+      focusable="false"
       viewBox="0 0 640 180"
       xmlns="http://www.w3.org/2000/svg"
     >
