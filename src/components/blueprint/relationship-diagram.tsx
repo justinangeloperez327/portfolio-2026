@@ -17,7 +17,7 @@ export function RelationshipDiagram({
   const labels = new Map(nodes.map((node) => [node.id, node.label]));
 
   return (
-    <BlueprintFrame title={title} description={description}>
+    <BlueprintFrame title={title} {...(description ? { description } : {})}>
       <div className="relationship-diagram">
         <ul className="relationship-diagram__nodes">
           {nodes.map((node) => (
