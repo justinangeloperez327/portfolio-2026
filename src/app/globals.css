@@ -1,27 +1,161 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f4f1e8;
-  --ink: #111111;
+  --color-ink: #111111;
+  --color-ink-deep: #242424;
+  --color-paper: #f4f1e8;
+  --color-paper-warm: #faf9f5;
+  --color-stone: #aaa69d;
+  --color-vermilion: #a83f2b;
+
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+
+  --space-page: clamp(1.5rem, 4vw, 4rem);
+  --space-section: clamp(5rem, 10vw, 10rem);
+  --content-width: 80rem;
+  --reading-width: 72ch;
+
+  --border-hairline: 1px solid rgb(17 17 17 / 18%);
+  --transition-fast: 150ms;
+  --transition-base: 220ms;
+  --transition-slow: 300ms;
 }
 
-* {
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-ink-deep: var(--color-ink-deep);
+  --color-paper: var(--color-paper);
+  --color-paper-warm: var(--color-paper-warm);
+  --color-stone: var(--color-stone);
+  --color-vermilion: var(--color-vermilion);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--color-paper);
 }
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper-warm);
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-block-start: 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+p {
+  max-width: var(--reading-width);
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
+.container-page {
+  width: min(calc(100% - (var(--space-page) * 2)), var(--content-width));
+  margin-inline: auto;
+}
+
+.section-space {
+  padding-block: var(--space-section);
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.display {
+  font-size: clamp(3rem, 9vw, 8rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+}
+
+.heading {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.lede {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.5;
+}
+
+.muted {
+  color: var(--color-ink-deep);
+}
+
+.hairline {
+  border-color: rgb(17 17 17 / 18%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
