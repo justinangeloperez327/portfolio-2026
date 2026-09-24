@@ -2,15 +2,19 @@
 
 ## Production contract
 
-The application targets Node.js 24+ with pnpm 12.6+ and a Next.js-compatible
+The application targets Node.js 24.x with pnpm 12.x and a Next.js-compatible
 hosting platform. The repository does not bind production to a specific hosting
 vendor.
 
 ## Required environment
 
-Set:
+For a custom domain, set:
 
 `NEXT_PUBLIC_SITE_URL=https://your-production-origin.example`
+
+On Vercel, the application can also derive its canonical production origin from
+`VERCEL_PROJECT_PRODUCTION_URL` when `NEXT_PUBLIC_SITE_URL` is not set. Set the
+explicit variable when a custom domain should be canonical.
 
 Use the final HTTPS origin with no trailing path. The value is public by design
 and is used for canonical metadata, sitemap generation, robots metadata, and
@@ -43,7 +47,7 @@ metadata generation deterministic during build verification.
 A deployment platform should:
 
 - install with pnpm;
-- use Node.js 24 or newer;
+- use Node.js 24.x;
 - run `pnpm build`;
 - start the generated Next.js application using the platform's supported
   Next.js runtime;
