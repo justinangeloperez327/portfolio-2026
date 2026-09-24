@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CaseStudyLayout } from "@/components/case-study";
 import { getCaseStudy } from "@/data/case-studies";
-import { projects } from "@/data/projects";
+import { projects } from "@/data/projects";\nimport { siteConfig } from "@/config/site";
 
 export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }));
