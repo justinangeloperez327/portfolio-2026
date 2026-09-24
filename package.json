@@ -2,10 +2,10 @@
   "name": "portfolio-2026",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "npm@11.20.0",
+  "packageManager": "pnpm@12.6.0",
   "engines": {
     "node": "24.x",
-    "npm": ">=11 <13"
+    "pnpm": "12.x"
   },
   "scripts": {
     "dev": "next dev",
@@ -13,7 +13,7 @@
     "start": "next start",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
@@ -38,8 +38,5 @@
     "typescript": "6.0.2",
     "@playwright/test": "^1.55.0",
     "vitest": "^5.0.1"
-  },
-  "allowScripts": {
-    "unrs-resolver@1.12.2": true
   }
 }
