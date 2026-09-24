@@ -1,8 +1,27 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { CaseStudyLayout } from "@/components/case-study";
+import { getCaseStudy } from "@/data/case-studies";
 import { projects } from "@/data/projects";
 
 export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const study = getCaseStudy(slug);
+
+  if (!study) return {};
+
+  return {
+    title: study.project.name,
+    description: study.project.summary,
+  };
 }
 
 export default async function ProjectPage({
@@ -11,16 +30,9 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = projects.find((item) => item.slug === slug);
+  const study = getCaseStudy(slug);
 
-  if (!project) notFound();
+  if (!study) notFound();
 
-  return (
-    <main>
-      <p>{project.category}</p>
-      <h1>{project.name}</h1>
-      <p>{project.summary}</p>
-      <p>{project.technologies.join(" · ")}</p>
-    </main>
-  );
+  return <CaseStudyLayout study={study} />;
 }
