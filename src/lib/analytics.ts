@@ -12,9 +12,11 @@ export type AnalyticsProperties = Readonly<
 >;
 
 export function trackEvent(
-  _event: AnalyticsEvent,
-  _properties?: AnalyticsProperties,
+  event: AnalyticsEvent,
+  properties?: AnalyticsProperties,
 ) {
+  void event;
+  void properties;
   // Provider intentionally not wired yet.
   // Keep this boundary stable so a privacy-reviewed provider can be added
   // without coupling UI components to a vendor SDK.
