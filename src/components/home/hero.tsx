@@ -28,7 +28,7 @@ export function Hero() {
         </div>
 
         <div className="home-hero__ink" aria-hidden="true">
-          <InkMark label="Decorative ink brush composition" />
+          <InkMark />
         </div>
 
         <div className="home-hero__meta">
