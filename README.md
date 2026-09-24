@@ -32,8 +32,10 @@ Open http://localhost:3000.
 ## Quality checks
 
 ```bash
+pnpm format:check
 pnpm lint
 pnpm typecheck
+pnpm test
 pnpm build
 ```
 
@@ -42,6 +44,24 @@ Or run all checks:
 ```bash
 pnpm check
 ```
+
+## Production
+
+Set `NEXT_PUBLIC_SITE_URL` to the final HTTPS origin before the production
+build. This value drives canonical metadata, sitemap URLs, robots metadata, and
+structured data.
+
+The repository intentionally does not assume a production hostname. Deployment
+may use Vercel or another Node.js-compatible platform that supports Next.js 16.
+
+The release gate is:
+
+```bash
+pnpm check
+```
+
+Playwright browser tests are available separately with `pnpm test:e2e` after
+building and starting the production server.
 
 ## Engineering principles
 
