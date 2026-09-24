@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/typography";
 import { LinkArrow, MetadataList } from "@/components/ui";
 import { SectionMarker } from "@/components/visual/section-marker";
 import { siteConfig } from "@/config/site";
+import { homeContent } from "@/content";
 
 export function ProfileSummary() {
   return (
@@ -32,7 +33,7 @@ export function ProfileSummary() {
             items={[
               { label: "Role", value: siteConfig.title },
               { label: "Location", value: siteConfig.location },
-              { label: "Focus", value: "Architecture · DX · Web systems" },
+              { label: "Focus", value: homeContent.profile.focus },
               { label: "Portfolio", value: "2026" },
             ]}
           />
