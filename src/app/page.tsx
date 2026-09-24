@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ProjectVisual } from "@/components/project/project-visual";
 import { siteConfig } from "@/config/site";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
-const buildLog = [
-  { date: "SEP 2026", title: "Berserk", detail: "Enterprise framework architecture and developer experience." },
-  { date: "SEP 2026", title: "Gungnir", detail: "Coroutine-based C++ framework foundations." },
-  { date: "SEP 2026", title: "Densleaf", detail: "Application-oriented language grammar." },
-  { date: "SEP 2026", title: "Quagmire", detail: "Compiled frontend framework experiments." },
-] as const;
-
 const capabilities = [
-  ["Framework Engineering", "Rust and C++ framework architecture, conventions, tooling and developer-facing APIs."],
-  ["Web Applications", "React, Next.js, Laravel and .NET applications designed around maintainable product systems."],
-  ["Language & Tooling", "Compiler concepts, application grammar and tools that reduce mechanical development work."],
-  ["Product Engineering", "Interfaces, APIs, data flows and architecture shaped around real operational needs."],
+  {
+    title: "Framework Engineering",
+    body: "Designing conventions, APIs, tooling, data layers and framework-owned workflows that make application development feel coherent.",
+  },
+  {
+    title: "Product Engineering",
+    body: "Building web products with clear information architecture, maintainable frontend systems, resilient APIs and deliberate interaction design.",
+  },
+  {
+    title: "Developer Experience",
+    body: "Reducing friction through better defaults, naming, documentation, errors and workflows instead of hiding complexity behind magic.",
+  },
 ] as const;
-
-const technologies = {
-  Languages: ["Rust", "C++", "C#", "TypeScript", "PHP", "JavaScript", "SQL"],
-  Frameworks: ["Next.js", "React", "Laravel", ".NET", "Node.js", "Tailwind CSS"],
-  Engineering: ["REST APIs", "Clean Architecture", "Modular Monoliths", "CI/CD", "Testing", "Performance"],
-} as const;
 
 export default function HomePage() {
+  const featured = projects.filter((project) => project.featured);
   const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -33,106 +30,202 @@ export default function HomePage() {
     jobTitle: siteConfig.title,
     url: siteConfig.url,
     sameAs: ["https://github.com/justinangeloperez327"],
-    address: { "@type": "PostalAddress", addressLocality: "Abu Dhabi", addressCountry: "AE" },
-    knowsAbout: ["Framework design", "Web application development", "Developer experience", "Software architecture"],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Abu Dhabi",
+      addressCountry: "AE",
+    },
+    knowsAbout: [
+      "Framework design",
+      "Web application development",
+      "Developer experience",
+      "Software architecture",
+    ],
   };
 
   return (
-    <main className="editorial-home">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
+    <main className="home">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
 
-      <section className="landing-hero">
-        <div className="landing-meta"><span>Portfolio 2026</span><span>Software Developer</span></div>
-        <h1>I build<br /><em>software,</em><br />frameworks<br />& systems.</h1>
-        <div className="landing-bottom">
-          <p>Focused on clarity, performance and developer experience.</p>
-          <span>{siteConfig.location}</span>
-          <a href="#about">Explore ↓</a>
+      <section className="hero">
+        <div className="hero__copy">
+          <div className="hero__eyebrow">
+            <span>Software Developer</span>
+            <span>Abu Dhabi · UAE</span>
+          </div>
+          <h1>
+            Software with
+            <br />
+            <em>less friction.</em>
+          </h1>
+          <p className="hero__lede">
+            I design frameworks, products and developer tools around clarity,
+            speed and a better development experience.
+          </p>
+          <div className="hero__actions">
+            <Link className="button button--primary" href="/work">
+              View selected work <span aria-hidden="true">↗</span>
+            </Link>
+            <a
+              className="button button--ghost"
+              href="https://github.com/justinangeloperez327"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="hero__system" aria-label="Current engineering focus">
+          <div className="hero__system-head">
+            <span>Current focus</span>
+            <span className="live-status"><i /> Building</span>
+          </div>
+          <div className="hero__system-title">
+            <span>01</span>
+            <strong>Developer experience is part of the architecture.</strong>
+          </div>
+          <div className="hero__system-grid">
+            <div><span>Frameworks</span><strong>Berserk · Gungnir</strong></div>
+            <div><span>Language</span><strong>Densleaf</strong></div>
+            <div><span>Frontend</span><strong>Quagmire</strong></div>
+            <div><span>Product</span><strong>Construction systems</strong></div>
+          </div>
+          <div className="hero__signal" aria-hidden="true">
+            <span /><span /><span /><span /><span /><span />
+          </div>
         </div>
       </section>
 
-      <section className="editorial-section intro-section" id="about">
-        <div className="section-label"><span>01</span><span>About</span></div>
-        <div className="section-display">
-          <h2>I build software around <em>clarity, performance</em> and developer experience.</h2>
+      <section className="intro" id="about">
+        <div className="section-kicker">
+          <span>About</span>
+          <span>01</span>
         </div>
-        <div className="section-support">
-          <p>My work spans web applications, framework design, language experiments and software architecture. I care about reducing complexity without hiding how a system works.</p>
-          <dl>
-            <div><dt>Location</dt><dd>{siteConfig.location}</dd></div>
-            <div><dt>Focus</dt><dd>Frameworks · Web Applications · Developer Experience</dd></div>
-          </dl>
+        <div className="intro__grid">
+          <h2>
+            I like hard systems.
+            <br />
+            I just don&apos;t think
+            <br />
+            they should <em>feel hard.</em>
+          </h2>
+          <div className="intro__copy">
+            <p>
+              My work moves between application development, framework design,
+              language experiments and software architecture.
+            </p>
+            <p>
+              I focus on the parts developers feel every day: APIs, naming,
+              workflows, defaults, performance and the boundaries that make a
+              system understandable.
+            </p>
+            <Link className="text-link" href="/about">
+              More about how I work <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="editorial-section updates-section">
-        <div className="section-label"><span>02</span><span>Build log</span></div>
-        <h2 className="section-title">Currently building.</h2>
-        <div className="update-list">
-          {buildLog.map((item) => (
-            <article key={item.title}>
-              <span>{item.date}</span><h3>{item.title}</h3><p>{item.detail}</p>
+      <section className="selected-work">
+        <div className="section-kicker">
+          <span>Selected work</span>
+          <span>02</span>
+        </div>
+
+        <div className="selected-work__intro">
+          <h2>Projects built to test better ways of building software.</h2>
+          <Link className="text-link" href="/work">
+            See all work <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
+
+        <div className="project-stack">
+          {featured.map((project, index) => (
+            <article className="project-feature" key={project.slug}>
+              <Link href={`/work/${project.slug}`} className="project-feature__visual">
+                <ProjectVisual slug={project.slug} />
+              </Link>
+              <div className="project-feature__content">
+                <div className="project-feature__meta">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <span>{project.category}</span>
+                  <span>{project.status}</span>
+                </div>
+                <h3>
+                  <Link href={`/work/${project.slug}`}>{project.name}</Link>
+                </h3>
+                <p>{project.summary}</p>
+                <div className="project-feature__stack">
+                  {project.technologies.map((technology) => (
+                    <span key={technology}>{technology}</span>
+                  ))}
+                </div>
+                <Link className="text-link" href={`/work/${project.slug}`}>
+                  Explore case study <span aria-hidden="true">↗</span>
+                </Link>
+              </div>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="editorial-section work-section">
-        <div className="section-label"><span>03</span><span>Selected work</span></div>
-        <div className="project-gallery">
-          {projects.map((project, index) => (
-            <Link className="gallery-project" href={`/work/${project.slug}`} key={project.slug}>
-              <div className="gallery-visual" aria-hidden="true"><span>{project.name.slice(0, 2).toUpperCase()}</span></div>
-              <div className="gallery-info">
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div><h3>{project.name}</h3><p>{project.summary}</p></div>
-                <div className="gallery-meta"><span>{project.category}</span><span>{project.status}</span><span>View ↗</span></div>
-              </div>
-            </Link>
+      <section className="capabilities">
+        <div className="section-kicker section-kicker--light">
+          <span>What I do</span>
+          <span>03</span>
+        </div>
+        <div className="capabilities__heading">
+          <h2>Build the system.<br />Improve the experience.</h2>
+          <p>
+            Good engineering is not only about what the system can do. It is
+            also about how clearly people can understand, operate and extend it.
+          </p>
+        </div>
+        <div className="capabilities__list">
+          {capabilities.map((capability, index) => (
+            <article key={capability.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{capability.title}</h3>
+              <p>{capability.body}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="editorial-section capability-section">
-        <div className="section-label"><span>04</span><span>What I build</span></div>
-        <div className="capability-list">
-          {capabilities.map(([title, body], index) => (
-            <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{body}</p></article>
-          ))}
+      <section className="build-strip">
+        <div>
+          <span>Now building</span>
+          <strong>Berserk</strong>
+          <span>Enterprise Rust framework</span>
+        </div>
+        <div>
+          <span>Exploring</span>
+          <strong>Densleaf</strong>
+          <span>Application-oriented language</span>
+        </div>
+        <div>
+          <span>Shipping with</span>
+          <strong>React + .NET</strong>
+          <span>Product systems</span>
         </div>
       </section>
 
-      <section className="editorial-section principles-section">
-        <div className="section-label light"><span>05</span><span>How I think</span></div>
-        <p><span>01</span>Clarity<br />before<br /><em>cleverness.</em></p>
-        <p className="right"><span>02</span>Developer<br />experience is<br /><em>architecture.</em></p>
-        <p><span>03</span>Performance<br />with<br /><em>purpose.</em></p>
-      </section>
-
-      <section className="editorial-section technology-section">
-        <div className="section-label"><span>06</span><span>Tools</span></div>
-        <h2 className="section-title">Tools I work with.</h2>
-        <div className="technology-grid">
-          {Object.entries(technologies).map(([group, items]) => (
-            <div key={group}><h3>{group}</h3><p>{items.join(" · ")}</p></div>
-          ))}
+      <section className="home-contact">
+        <div className="section-kicker section-kicker--light">
+          <span>Contact</span>
+          <span>04</span>
         </div>
-      </section>
-
-      <section className="editorial-section about-preview">
-        <div className="profile-visual" aria-hidden="true"><span>JAP</span></div>
-        <div className="profile-copy">
-          <div className="section-label"><span>07</span><span>Profile</span></div>
-          <h2>More than<br />just code.</h2>
-          <p>I enjoy taking systems that feel complicated and finding a structure that makes them easier to understand, build and maintain.</p>
-          <Link href="/about">Read about me ↗</Link>
+        <div className="home-contact__content">
+          <h2>Have a difficult software problem?</h2>
+          <Link href="/contact">
+            Let&apos;s talk <span aria-hidden="true">↗</span>
+          </Link>
         </div>
-      </section>
-
-      <section className="editorial-contact">
-        <div className="section-label light"><span>08</span><span>Contact</span></div>
-        <h2>Have something<br />worth building?</h2>
-        <Link href="/contact">LET&apos;S TALK. ↗</Link>
       </section>
     </main>
   );
