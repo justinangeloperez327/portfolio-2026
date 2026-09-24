@@ -1,66 +1,30 @@
 import type { Metadata } from "next";
-import { EditorialGrid, PageShell, Section } from "@/components/layout";
-import { DisplayHeading, Eyebrow, Lede } from "@/components/typography";
-import { ProjectLink, Tag } from "@/components/ui";
-import { InkRule } from "@/components/visual/ink-rule";
+import Link from "next/link";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Work",
-  description:
-    "Selected framework, programming language, frontend, and application engineering work by Justin Angelo Perez.",
+  description: "Selected framework, language, frontend and application engineering work by Justin Angelo Perez.",
+  alternates: { canonical: "/work" },
 };
-
-const categories = [...new Set(projects.map((project) => project.category))];
 
 export default function WorkPage() {
   return (
-    <PageShell>
-      <section className="work-intro" aria-labelledby="work-title">
-        <EditorialGrid>
-          <div className="work-intro__title">
-            <Eyebrow>Selected systems · 2026</Eyebrow>
-            <DisplayHeading>
-              <span id="work-title">Work</span>
-            </DisplayHeading>
-          </div>
-          <div className="work-intro__lede">
-            <Lede>
-              Frameworks, language experiments, frontend systems, and
-              applications shaped by developer experience and architectural
-              clarity.
-            </Lede>
-          </div>
-        </EditorialGrid>
+    <main className="subpage work-page">
+      <header className="subpage-hero">
+        <div className="section-label"><span>Portfolio</span><span>2026</span></div>
+        <h1>Selected<br /><em>work.</em></h1>
+        <p>Frameworks, applications and experiments exploring better ways to build software.</p>
+      </header>
+      <section className="work-catalog" aria-label="Project index">
+        {projects.map((project, index) => (
+          <Link href={`/work/${project.slug}`} className="catalog-project" key={project.slug}>
+            <div className="catalog-head"><span>{String(index + 1).padStart(2, "0")}</span><span>{project.category}</span><span>{project.status}</span></div>
+            <div className="catalog-visual" aria-hidden="true"><span>{project.name.slice(0, 2).toUpperCase()}</span></div>
+            <div className="catalog-copy"><h2>{project.name}</h2><p>{project.summary}</p><span>View project ↗</span></div>
+          </Link>
+        ))}
       </section>
-
-      <InkRule />
-
-      <Section className="work-index" id="project-index">
-        <div className="work-index__meta">
-          <p className="technical-label">
-            {String(projects.length).padStart(2, "0")} projects
-          </p>
-          <div className="work-index__categories" aria-label="Project categories">
-            {categories.map((category) => (
-              <Tag key={category}>{category}</Tag>
-            ))}
-          </div>
-        </div>
-
-        <div className="work-index__projects">
-          {projects.map((project, index) => (
-            <ProjectLink
-              key={project.slug}
-              href={`/work/${project.slug}`}
-              index={String(index + 1).padStart(2, "0")}
-              name={project.name}
-              category={project.category}
-              summary={project.summary}
-            />
-          ))}
-        </div>
-      </Section>
-    </PageShell>
+    </main>
   );
 }
