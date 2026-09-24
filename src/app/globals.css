@@ -2141,7 +2141,8 @@ code,
 
 .container-page,
 .page-shell {
-  width: min(100%, var(--content-width));
+  width: min(calc(100% - (var(--space-page) * 2)), var(--content-width));
+  margin-inline: auto;
 }
 
 @media (max-width: 63.999rem) {
@@ -2170,8 +2171,8 @@ code,
 
 @media (max-width: 48rem) {
   :root {
-    --page-gutter: clamp(1rem, 5vw, 1.5rem);
-    --section-space: clamp(3.5rem, 12vw, 5rem);
+    --space-page: clamp(1rem, 5vw, 1.5rem);
+    --space-section: clamp(3.5rem, 12vw, 5rem);
   }
 
   .display {
@@ -2187,7 +2188,7 @@ code,
     font-size: clamp(1.125rem, 5vw, 1.375rem);
   }
 
-  .hero,
+  .home-hero,
   .work-intro,
   .engineering-intro,
   .about-intro,
@@ -2201,23 +2202,23 @@ code,
     gap: 0.75rem;
   }
 
-  .project-link__category,
+  .project-link__meta,
   .project-link__summary {
     grid-column: 2 / -1;
   }
 
-  .metadata-list > div {
+  .metadata-list__item {
     grid-template-columns: minmax(6.5rem, 0.8fr) minmax(0, 1.2fr);
     gap: 1rem;
   }
 
-  .case-study-header__meta {
+  .case-study-header__metadata {
     gap: 1.5rem;
   }
 
   .system-flow__node,
-  .layer-diagram__layer,
-  .relationship-diagram__node {
+  .layer-diagram li,
+  .relationship-diagram__nodes li {
     padding: 1rem;
   }
 }
@@ -2268,7 +2269,7 @@ code,
   }
 
   .blueprint-frame {
-    margin-inline: calc(var(--page-gutter) * -0.25);
+    margin-inline: calc(var(--space-page) * -0.25);
   }
 }
 
@@ -2378,4 +2379,39 @@ summary:focus-visible,
 .engineering-principle-list article,
 .about-focus-grid article {
   contain: layout paint;
+}
+
+
+/* Final UX review */
+[id] {
+  scroll-margin-top: clamp(1.5rem, 4vw, 3rem);
+}
+
+.primary-navigation a,
+.mobile-navigation a,
+.site-footer a,
+.case-study-nav a {
+  text-underline-offset: 0.25em;
+}
+
+@media (hover: hover) {
+  .primary-navigation a:hover,
+  .mobile-navigation a:hover,
+  .site-footer a:hover,
+  .case-study-nav a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+}
+
+@media (max-width: 48rem) {
+  .site-brand__role {
+    display: none;
+  }
+
+  .home-section__action,
+  .about-next__action,
+  .contact-note__copy {
+    justify-items: start;
+  }
 }
