@@ -13,7 +13,7 @@ export function LayerDiagram({
   layers,
 }: LayerDiagramProps) {
   return (
-    <BlueprintFrame title={title} description={description}>
+    <BlueprintFrame title={title} {...(description ? { description } : {})}>
       <ol className="layer-diagram">
         {layers.map((layer, index) => (
           <li key={layer.id}>
