@@ -45,7 +45,7 @@ export default function EngineeringPage() {
           <SectionHeading>How I make engineering decisions.</SectionHeading>
         </div>
         <div className="engineering-principle-list">
-          {principles.map((principle) => (
+          {engineeringPrinciples.map((principle) => (
             <article key={principle.index}>
               <span className="technical-label">{principle.index}</span>
               <h3>{principle.title}</h3>
@@ -74,7 +74,7 @@ export default function EngineeringPage() {
         <LayerDiagram
           title="Framework responsibility layers"
           description="Application intent stays at the top; infrastructure details remain below the framework contract."
-          layers={architectureLayers}
+          layers={engineeringArchitectureLayers}
         />
       </Section>
 
@@ -95,7 +95,7 @@ export default function EngineeringPage() {
             when those concepts make responsibilities easier to recognize.
           </p>
         </ReadingColumn>
-        <SystemFlow blueprint={requestFlow} />
+        <SystemFlow blueprint={engineeringRequestFlow} />
       </Section>
 
       <Section className="engineering-section" id="trade-offs">
