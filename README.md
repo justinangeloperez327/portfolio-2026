@@ -4,7 +4,7 @@ Personal software engineering portfolio built with Next.js, TypeScript, and Tail
 
 ## Design direction
 
-The interface is being developed as an architectural portfolio influenced by Japanese sumi-e ink painting: restrained, asymmetric, monochromatic, spacious, and content-led.
+The interface uses a product-first editorial design system focused on strong hierarchy, project-specific technical visuals, accessible interaction, and responsive presentation.
 
 ## Stack
 
@@ -12,19 +12,19 @@ The interface is being developed as an architectural portfolio influenced by Jap
 - React 19
 - TypeScript
 - Tailwind CSS 4
-- pnpm
+- npm
 - GitHub Actions
 
 ## Requirements
 
 - Node.js 24 LTS or newer
-- pnpm 12.6 or newer
+- npm 11 or newer
 
 ## Development
 
 ```bash
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
 
 Open http://localhost:3000.
@@ -32,17 +32,17 @@ Open http://localhost:3000.
 ## Quality checks
 
 ```bash
-pnpm format:check
-pnpm lint
-pnpm typecheck
-pnpm test
-pnpm build
+npm run format:check
+npm run lint
+npm run typecheck
+npm test
+npm run build
 ```
 
 Or run all checks:
 
 ```bash
-pnpm check
+npm run check
 ```
 
 ## Production
@@ -57,10 +57,10 @@ may use Vercel or another Node.js-compatible platform that supports Next.js 16.
 The release gate is:
 
 ```bash
-pnpm check
+npm run check
 ```
 
-Playwright browser tests are available separately with `pnpm test:e2e` after
+Playwright browser tests are available separately with `npm run test:e2e` after
 building and starting the production server.
 
 ## Engineering principles
