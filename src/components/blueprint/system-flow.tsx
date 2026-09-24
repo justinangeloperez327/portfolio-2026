@@ -9,7 +9,7 @@ export function SystemFlow({ blueprint }: SystemFlowProps) {
   return (
     <BlueprintFrame
       title={blueprint.title}
-      description={blueprint.description}
+      {...(blueprint.description ? { description: blueprint.description } : {})}
       className="system-flow"
     >
       <ol className="system-flow__nodes">
