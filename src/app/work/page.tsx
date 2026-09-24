@@ -1,28 +1,50 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ProjectVisual } from "@/components/project/project-visual";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Selected framework, language, frontend and application engineering work by Justin Angelo Perez.",
+  description:
+    "Selected framework, language, frontend and application engineering work by Justin Angelo Perez.",
   alternates: { canonical: "/work" },
 };
 
 export default function WorkPage() {
   return (
-    <main className="subpage work-page">
-      <header className="subpage-hero">
-        <div className="section-label"><span>Portfolio</span><span>2026</span></div>
-        <h1>Selected<br /><em>work.</em></h1>
-        <p>Frameworks, applications and experiments exploring better ways to build software.</p>
+    <main className="work-page">
+      <header className="work-hero">
+        <div className="section-kicker">
+          <span>Selected work</span>
+          <span>2026</span>
+        </div>
+        <div className="work-hero__grid">
+          <h1>Ideas turned<br />into <em>systems.</em></h1>
+          <p>
+            Frameworks, language experiments and product work focused on
+            developer experience, architecture and practical software design.
+          </p>
+        </div>
       </header>
-      <section className="work-catalog" aria-label="Project index">
+
+      <section className="work-grid" aria-label="Project index">
         {projects.map((project, index) => (
-          <Link href={`/work/${project.slug}`} className="catalog-project" key={project.slug}>
-            <div className="catalog-head"><span>{String(index + 1).padStart(2, "0")}</span><span>{project.category}</span><span>{project.status}</span></div>
-            <div className="catalog-visual" aria-hidden="true"><span>{project.name.slice(0, 2).toUpperCase()}</span></div>
-            <div className="catalog-copy"><h2>{project.name}</h2><p>{project.summary}</p><span>View project ↗</span></div>
-          </Link>
+          <article className="work-card" key={project.slug}>
+            <Link className="work-card__visual" href={`/work/${project.slug}`}>
+              <ProjectVisual slug={project.slug} compact />
+            </Link>
+            <div className="work-card__meta">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <span>{project.category}</span>
+              <span>{project.status}</span>
+            </div>
+            <h2><Link href={`/work/${project.slug}`}>{project.name}</Link></h2>
+            <p>{project.summary}</p>
+            <div className="work-card__footer">
+              <div>{project.technologies.map((item) => <span key={item}>{item}</span>)}</div>
+              <Link href={`/work/${project.slug}`}>Case study ↗</Link>
+            </div>
+          </article>
         ))}
       </section>
     </main>
