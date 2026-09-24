@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { SiteFooter, SiteHeader } from "@/components/navigation";
+import { MobileNavigation } from "@/components/navigation/mobile-navigation";
+import { SkipLink } from "@/components/ui";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,7 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SkipLink />
+        <SiteHeader />
+        <MobileNavigation />
+        <div id="main-content">{children}</div>
+        <SiteFooter />
+      </body>
     </html>
   );
 }
