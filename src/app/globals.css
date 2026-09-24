@@ -765,3 +765,137 @@ p {
     flex-direction: column;
   }
 }
+
+
+/* Homepage content */
+.home-section {
+  border-top: var(--border-hairline);
+}
+
+.home-section__heading {
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.home-section__heading .heading {
+  max-width: 12ch;
+  margin-bottom: 0;
+}
+
+.home-section__action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: clamp(2rem, 4vw, 4rem);
+}
+
+.home-projects {
+  display: grid;
+}
+
+.principle {
+  grid-column: span 4;
+  padding-top: 1rem;
+  border-top: var(--border-hairline);
+}
+
+.principle h3 {
+  margin-block: 2rem 1rem;
+  font-size: clamp(1.375rem, 2.5vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.principle p {
+  margin-bottom: 0;
+  color: var(--color-ink-deep);
+}
+
+.home-profile__copy {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.home-profile__copy p {
+  margin-bottom: 0;
+}
+
+.home-profile__copy .link-arrow {
+  justify-self: start;
+  margin-top: 0.5rem;
+}
+
+.home-contact {
+  padding-bottom: 0;
+  border-top: 0;
+}
+
+.home-contact .ink-rule {
+  margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.home-contact__heading {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 2rem;
+}
+
+.home-contact__heading .heading {
+  max-width: 11ch;
+}
+
+.home-contact__action {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 1.5rem;
+  align-self: end;
+}
+
+.home-contact__action p {
+  margin: 0;
+  color: var(--color-ink-deep);
+}
+
+.home-contact__action .link-arrow {
+  justify-self: start;
+}
+
+@media (min-width: 64rem) {
+  .home-section__heading {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .home-section__heading .section-marker {
+    grid-column: 1 / 4;
+    align-self: start;
+  }
+
+  .home-section__heading .heading {
+    grid-column: 5 / 12;
+  }
+
+  .home-contact__heading {
+    grid-column: 1 / 8;
+  }
+
+  .home-contact__action {
+    grid-column: 9 / 13;
+  }
+}
+
+@media (max-width: 63.99rem) {
+  .principle {
+    grid-column: span 8;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .principle {
+    grid-column: 1 / -1;
+  }
+
+  .home-section__action {
+    justify-content: flex-start;
+  }
+}
