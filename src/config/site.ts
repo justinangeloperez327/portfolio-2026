@@ -4,6 +4,8 @@ export const siteConfig = {
   description:
     "Software developer focused on frameworks, developer experience, web applications, and software architecture.",
   location: "Abu Dhabi, United Arab Emirates",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-2026.vercel.app",
+  locale: "en_AE",
   navigation: [
     { label: "Work", href: "/work" },
     { label: "Engineering", href: "/engineering" },
