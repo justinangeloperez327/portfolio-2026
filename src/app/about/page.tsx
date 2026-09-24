@@ -75,7 +75,7 @@ export default function AboutPage() {
           <SectionHeading>What I spend time thinking about.</SectionHeading>
         </div>
         <div className="about-focus-grid">
-          {focusAreas.map((area) => (
+          {aboutFocusAreas.map((area) => (
             <article key={area.index}>
               <span className="technical-label">{area.index}</span>
               <h3>{area.title}</h3>
