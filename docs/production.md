@@ -2,7 +2,7 @@
 
 ## Production contract
 
-The application targets Node.js 24.x with pnpm 12.x and a Next.js-compatible
+The application targets Node.js 24.x with npm and a Next.js-compatible
 hosting platform. The repository does not bind production to a specific hosting
 vendor.
 
@@ -25,7 +25,7 @@ It no longer invents an unverified production hostname.
 
 ## Release gate
 
-Before deployment, `pnpm check` must complete successfully. It covers:
+Before deployment, `npm run check` must complete successfully. It covers:
 
 1. Prettier formatting verification;
 2. ESLint with zero warnings;
@@ -38,7 +38,7 @@ against the production build before a significant release.
 
 ## CI
 
-Pushes to `main` run formatting, linting, type checking, unit tests, and a
+Pushes to `main` run linting, type checking, unit tests, and a
 production build. CI supplies a non-production canonical origin only to make
 metadata generation deterministic during build verification.
 
@@ -46,9 +46,9 @@ metadata generation deterministic during build verification.
 
 A deployment platform should:
 
-- install with pnpm;
+- install with `npm ci` from the committed `package-lock.json`;
 - use Node.js 24.x;
-- run `pnpm build`;
+- run `npm run build`;
 - start the generated Next.js application using the platform's supported
   Next.js runtime;
 - expose only the intended public environment variables;
