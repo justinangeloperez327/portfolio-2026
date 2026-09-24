@@ -65,7 +65,7 @@ export default function ResumePage() {
           <SectionHeading>Areas of practice.</SectionHeading>
         </div>
         <div className="resume-capabilities">
-          {capabilities.map((capability, index) => (
+          {resumeCapabilities.map((capability, index) => (
             <div key={capability}>
               <span className="technical-label">
                 {String(index + 1).padStart(2, "0")}
@@ -82,7 +82,7 @@ export default function ResumePage() {
           <SectionHeading>Tools and languages used across the work.</SectionHeading>
         </div>
         <div className="resume-technologies" aria-label="Technology list">
-          {technologies.map((technology) => (
+          {resumeTechnologies.map((technology) => (
             <Tag key={technology}>{technology}</Tag>
           ))}
         </div>
@@ -94,7 +94,7 @@ export default function ResumePage() {
           <SectionHeading>Independent engineering projects.</SectionHeading>
         </div>
         <div className="resume-projects">
-          {currentWork.map((project, index) => (
+          {resumeCurrentWork.map((project, index) => (
             <article key={project.name}>
               <span className="technical-label">
                 {String(index + 1).padStart(2, "0")}
