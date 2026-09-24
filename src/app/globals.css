@@ -2004,3 +2004,112 @@ p {
     border-right: 0;
   }
 }
+
+
+/* Motion system */
+:root {
+  --motion-duration-fast: 150ms;
+  --motion-duration-base: 220ms;
+  --motion-duration-slow: 300ms;
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-ease-enter: cubic-bezier(0, 0, 0.2, 1);
+}
+
+@keyframes ink-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rule-reveal {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-shell > :first-child {
+    animation: ink-reveal var(--motion-duration-slow) var(--motion-ease-enter)
+      both;
+  }
+
+  .page-shell > .ink-rule:first-of-type {
+    transform-origin: left center;
+    animation: rule-reveal var(--motion-duration-slow)
+      var(--motion-ease-standard) both;
+  }
+
+  .link-arrow,
+  .contact-note__email,
+  .contact-methods a {
+    transition:
+      opacity var(--motion-duration-fast) var(--motion-ease-standard),
+      border-color var(--motion-duration-fast) var(--motion-ease-standard);
+  }
+
+  .link-arrow:hover,
+  .contact-note__email:hover,
+  .contact-methods a:hover {
+    opacity: 0.62;
+  }
+
+  .project-link {
+    transition:
+      background-color var(--motion-duration-base) var(--motion-ease-standard),
+      padding-inline var(--motion-duration-base) var(--motion-ease-standard);
+  }
+
+  .project-link:hover {
+    padding-inline: 0.5rem;
+    background-color: color-mix(in srgb, var(--color-ink) 3%, transparent);
+  }
+
+  .project-link__arrow,
+  .link-arrow span[aria-hidden="true"],
+  .contact-methods a span[aria-hidden="true"],
+  .contact-note__email span[aria-hidden="true"] {
+    transition: transform var(--motion-duration-base) var(--motion-ease-standard);
+  }
+
+  .project-link:hover .project-link__arrow,
+  .link-arrow:hover span[aria-hidden="true"],
+  .contact-methods a:hover span[aria-hidden="true"],
+  .contact-note__email:hover span[aria-hidden="true"] {
+    transform: translate(0.125rem, -0.125rem);
+  }
+
+  .site-header a,
+  .primary-navigation a,
+  .mobile-navigation a,
+  .site-footer a {
+    transition: opacity var(--motion-duration-fast) var(--motion-ease-standard);
+  }
+
+  .site-header a:hover,
+  .primary-navigation a:hover,
+  .mobile-navigation a:hover,
+  .site-footer a:hover {
+    opacity: 0.62;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
