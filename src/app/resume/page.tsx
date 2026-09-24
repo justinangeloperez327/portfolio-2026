@@ -1,128 +1,60 @@
 import type { Metadata } from "next";
-import { EditorialGrid, PageShell, Section } from "@/components/layout";
-import { DisplayHeading, Eyebrow, Lede, SectionHeading } from "@/components/typography";
-import { LinkArrow, MetadataList, Tag } from "@/components/ui";
-import { InkRule } from "@/components/visual/ink-rule";
-import { SectionMarker } from "@/components/visual/section-marker";
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import {
-  resumeCapabilities,
-  resumeCurrentWork,
-  resumeTechnologies,
-} from "@/content";
+import { resumeCapabilities, resumeCurrentWork, resumeTechnologies } from "@/content";
 
 export const metadata: Metadata = {
   title: "Resume",
-  description:
-    "Professional resume overview for Justin Angelo Perez, software developer focused on web applications, architecture, frameworks, and developer experience.",
+  description: "Professional resume overview for Justin Angelo Perez, software developer focused on web applications, architecture, frameworks and developer experience.",
+  alternates: { canonical: "/resume" },
 };
 
 export default function ResumePage() {
   return (
-    <PageShell>
-      <section className="resume-intro" aria-labelledby="resume-title">
-        <EditorialGrid>
-          <div className="resume-intro__title">
-            <Eyebrow>Professional profile · 2026</Eyebrow>
-            <DisplayHeading>
-              <span id="resume-title">Resume</span>
-            </DisplayHeading>
-          </div>
-          <div className="resume-intro__lede">
-            <Lede>
-              Software developer working across application engineering,
-              architecture, framework design, and developer experience.
-            </Lede>
-          </div>
-        </EditorialGrid>
+    <main className="subpage resume-page">
+      <header className="subpage-hero resume-hero">
+        <div className="section-label"><span>Resume</span><span>2026</span></div>
+        <h1>Justin Angelo<br /><em>Perez.</em></h1>
+        <div className="resume-identity"><strong>{siteConfig.title}</strong><span>{siteConfig.location}</span></div>
+      </header>
+
+      <section className="resume-block">
+        <div className="section-label"><span>01</span><span>Profile</span></div>
+        <div className="resume-lead">
+          <h2>I build web applications and explore the framework, language and runtime decisions that shape developer experience.</h2>
+          <dl><div><dt>Role</dt><dd>{siteConfig.title}</dd></div><div><dt>Location</dt><dd>{siteConfig.location}</dd></div><div><dt>Focus</dt><dd>Architecture · DX · Web systems</dd></div></dl>
+        </div>
       </section>
 
-      <InkRule />
+      <section className="resume-block">
+        <div className="section-label"><span>02</span><span>Core expertise</span></div>
+        <div className="resume-expertise">
+          {resumeCapabilities.map((item, index) => <div key={item}><span>{String(index + 1).padStart(2, "0")}</span><strong>{item}</strong></div>)}
+        </div>
+      </section>
 
-      <Section className="resume-section" id="profile">
-        <div className="resume-section__heading">
-          <SectionMarker index="01" label="Profile" />
-          <SectionHeading>{siteConfig.name}</SectionHeading>
-        </div>
-        <div className="resume-profile">
-          <p className="lede">
-            I build web applications and explore the framework, language, and
-            runtime decisions that shape how developers work with software.
-          </p>
-          <MetadataList
-            items={[
-              { label: "Role", value: siteConfig.title },
-              { label: "Location", value: siteConfig.location },
-              { label: "Focus", value: "Architecture · DX · Web systems" },
-            ]}
-          />
-        </div>
-      </Section>
+      <section className="resume-block">
+        <div className="section-label"><span>03</span><span>Technology</span></div>
+        <div className="resume-tech">{resumeTechnologies.map((item) => <span key={item}>{item}</span>)}</div>
+      </section>
 
-      <Section className="resume-section" id="capabilities">
-        <div className="resume-section__heading">
-          <SectionMarker index="02" label="Capabilities" />
-          <SectionHeading>Areas of practice.</SectionHeading>
-        </div>
-        <div className="resume-capabilities">
-          {resumeCapabilities.map((capability, index) => (
-            <div key={capability}>
-              <span className="technical-label">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span>{capability}</span>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section className="resume-section" id="technology">
-        <div className="resume-section__heading">
-          <SectionMarker index="03" label="Technology" />
-          <SectionHeading>Tools and languages used across the work.</SectionHeading>
-        </div>
-        <div className="resume-technologies" aria-label="Technology list">
-          {resumeTechnologies.map((technology) => (
-            <Tag key={technology}>{technology}</Tag>
-          ))}
-        </div>
-      </Section>
-
-      <Section className="resume-section" id="current-work">
-        <div className="resume-section__heading">
-          <SectionMarker index="04" label="Current work" />
-          <SectionHeading>Independent engineering projects.</SectionHeading>
-        </div>
-        <div className="resume-projects">
+      <section className="resume-block">
+        <div className="section-label"><span>04</span><span>Selected projects</span></div>
+        <div className="resume-project-list">
           {resumeCurrentWork.map((project, index) => (
-            <article key={project.name}>
-              <span className="technical-label">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3>{project.name}</h3>
-                <p>{project.detail}</p>
-              </div>
-              <LinkArrow href={project.href}>Case study</LinkArrow>
-            </article>
+            <Link href={project.href} key={project.name}><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{project.name}</strong><small>{project.detail}</small></div><span>↗</span></Link>
           ))}
         </div>
-      </Section>
+      </section>
 
-      <Section className="resume-section resume-history" id="experience">
-        <div className="resume-section__heading">
-          <SectionMarker index="05" label="Experience" />
-          <SectionHeading>Professional history.</SectionHeading>
+      <section className="resume-block resume-history">
+        <div className="section-label"><span>05</span><span>Professional history</span></div>
+        <div className="resume-history-note">
+          <h2>Verified history only.</h2>
+          <p>Employment chronology, education and dates will be added from the source resume rather than reconstructed from incomplete portfolio context.</p>
+          <Link href="/contact">Request professional information ↗</Link>
         </div>
-        <div className="resume-history__notice">
-          <p>
-            Employment chronology, education, and verified dates will be added
-            from the source resume rather than reconstructed from incomplete
-            portfolio context.
-          </p>
-          <LinkArrow href="/contact">Request professional information</LinkArrow>
-        </div>
-      </Section>
-    </PageShell>
+      </section>
+    </main>
   );
 }
