@@ -3,36 +3,13 @@ import { EditorialGrid, PageShell, Section } from "@/components/layout";
 import { DisplayHeading, Eyebrow, Lede, SectionHeading } from "@/components/typography";
 import { InkRule } from "@/components/visual/ink-rule";
 import { SectionMarker } from "@/components/visual/section-marker";
+import { contactConversationAreas, contactMethods } from "@/content";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
     "Contact Justin Angelo Perez about software engineering, architecture, framework, and product development work.",
 };
-
-const contactMethods = [
-  {
-    label: "Email",
-    value: "justinangeloperez327@gmail.com",
-    href: "mailto:justinangeloperez327@gmail.com",
-    note: "Best for project, engineering, and professional conversations.",
-  },
-  {
-    label: "GitHub",
-    value: "justinangeloperez327",
-    href: "https://github.com/justinangeloperez327",
-    note: "Repositories, experiments, and ongoing engineering work.",
-  },
-] as const;
-
-const conversationAreas = [
-  "Software engineering",
-  "Web application development",
-  "Software architecture",
-  "Framework and tooling design",
-  "Developer experience",
-  "Product development",
-] as const;
 
 export default function ContactPage() {
   return (
