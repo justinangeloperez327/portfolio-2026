@@ -40,10 +40,10 @@ The current site does not use a contact form or intentionally collect visitor
 messages. Contact happens through the published email address or external GitHub
 profile.
 
-Analytics is a later group. If analytics is introduced, prefer the least
-invasive measurement sufficient for the product question. Document what is
-collected, avoid unnecessary identifiers, and reassess whether a privacy notice
-or consent mechanism is required for the selected provider and jurisdictions.
+Analytics is intentionally provider-free by default. The analytics architecture
+uses a vendor-neutral boundary so a provider can be introduced only after a
+specific measurement requirement and privacy review exist. See
+`docs/analytics.md` for the collection and provider rules.
 
 ## External links
 
