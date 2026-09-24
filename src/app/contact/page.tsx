@@ -65,7 +65,7 @@ export default function ContactPage() {
           <SectionHeading>Useful reasons to get in touch.</SectionHeading>
         </div>
         <div className="contact-topics">
-          {conversationAreas.map((area, index) => (
+          {contactConversationAreas.map((area, index) => (
             <div key={area}>
               <span className="technical-label">
                 {String(index + 1).padStart(2, "0")}
