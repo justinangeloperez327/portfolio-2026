@@ -3,13 +3,29 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { projects } from "@/data/projects";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
+const buildLog = [
+  { date: "SEP 2026", title: "Berserk", detail: "Enterprise framework architecture and developer experience." },
+  { date: "SEP 2026", title: "Gungnir", detail: "Coroutine-based C++ framework foundations." },
+  { date: "SEP 2026", title: "Densleaf", detail: "Application-oriented language grammar." },
+  { date: "SEP 2026", title: "Quagmire", detail: "Compiled frontend framework experiments." },
+] as const;
+
+const capabilities = [
+  ["Framework Engineering", "Rust and C++ framework architecture, conventions, tooling and developer-facing APIs."],
+  ["Web Applications", "React, Next.js, Laravel and .NET applications designed around maintainable product systems."],
+  ["Language & Tooling", "Compiler concepts, application grammar and tools that reduce mechanical development work."],
+  ["Product Engineering", "Interfaces, APIs, data flows and architecture shaped around real operational needs."],
+] as const;
+
+const technologies = {
+  Languages: ["Rust", "C++", "C#", "TypeScript", "PHP", "JavaScript", "SQL"],
+  Frameworks: ["Next.js", "React", "Laravel", ".NET", "Node.js", "Tailwind CSS"],
+  Engineering: ["REST APIs", "Clean Architecture", "Modular Monoliths", "CI/CD", "Testing", "Performance"],
+} as const;
 
 export default function HomePage() {
-  const featured = projects.filter((project) => project.featured);
-  const experiments = projects.filter((project) => !project.featured);
   const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -22,103 +38,101 @@ export default function HomePage() {
   };
 
   return (
-    <main className="story-home">
+    <main className="editorial-home">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
 
-      <section className="story-hero">
-        <div className="story-kicker">
-          <span>Justin Angelo Perez</span><span>Software Developer</span><span>Abu Dhabi · UAE</span>
-        </div>
-        <h1>Can software<br />feel <em>simpler?</em></h1>
-        <div className="story-hero-foot">
-          <p>I build frameworks, products and systems around clarity, performance and developer experience.</p>
-          <a href="#story">Scroll to begin the story ↓</a>
-        </div>
-      </section>
-
-      <section className="story-intro" id="story">
-        <p className="chapter">Chapter I · About</p>
-        <h2>I design software<br />for <em>humans first.</em></h2>
-        <div className="story-copy">
-          <p>My work moves between application development, framework design and programming-language experiments. The goal stays the same: make difficult systems easier to understand and use.</p>
-          <p className="story-place">Based in<br /><strong>ABU DHABI</strong></p>
-        </div>
-        <div className="marquee-words" aria-label="Areas of focus">
-          <span>FRAMEWORKS</span><span>WEB APPLICATIONS</span><span>DEVELOPER EXPERIENCE</span>
+      <section className="landing-hero">
+        <div className="landing-meta"><span>Portfolio 2026</span><span>Software Developer</span></div>
+        <h1>I build<br /><em>software,</em><br />frameworks<br />& systems.</h1>
+        <div className="landing-bottom">
+          <p>Focused on clarity, performance and developer experience.</p>
+          <span>{siteConfig.location}</span>
+          <a href="#about">Explore ↓</a>
         </div>
       </section>
 
-      <section className="story-work">
-        <header className="story-section-head">
-          <p className="chapter">Chapter II · Selected work</p>
-          <h2>Where ideas<br />become <em>systems.</em></h2>
-        </header>
-        <div className="featured-projects">
-          {featured.map((project, index) => (
-            <Link className="feature-project" href={`/work/${project.slug}`} key={project.slug}>
-              <div className="project-number">{String(index + 1).padStart(2, "0")}</div>
-              <div className="project-stage" aria-hidden="true"><span>{project.name.slice(0, 1)}</span></div>
-              <div className="project-story">
-                <p>{project.category} · {project.status}</p>
-                <h3>{project.name}</h3>
-                <p>{project.summary}</p>
-                <span>View project ↗</span>
+      <section className="editorial-section intro-section" id="about">
+        <div className="section-label"><span>01</span><span>About</span></div>
+        <div className="section-display">
+          <h2>I build software around <em>clarity, performance</em> and developer experience.</h2>
+        </div>
+        <div className="section-support">
+          <p>My work spans web applications, framework design, language experiments and software architecture. I care about reducing complexity without hiding how a system works.</p>
+          <dl>
+            <div><dt>Location</dt><dd>{siteConfig.location}</dd></div>
+            <div><dt>Focus</dt><dd>Frameworks · Web Applications · Developer Experience</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section className="editorial-section updates-section">
+        <div className="section-label"><span>02</span><span>Build log</span></div>
+        <h2 className="section-title">Currently building.</h2>
+        <div className="update-list">
+          {buildLog.map((item) => (
+            <article key={item.title}>
+              <span>{item.date}</span><h3>{item.title}</h3><p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="editorial-section work-section">
+        <div className="section-label"><span>03</span><span>Selected work</span></div>
+        <div className="project-gallery">
+          {projects.map((project, index) => (
+            <Link className="gallery-project" href={`/work/${project.slug}`} key={project.slug}>
+              <div className="gallery-visual" aria-hidden="true"><span>{project.name.slice(0, 2).toUpperCase()}</span></div>
+              <div className="gallery-info">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div><h3>{project.name}</h3><p>{project.summary}</p></div>
+                <div className="gallery-meta"><span>{project.category}</span><span>{project.status}</span><span>View ↗</span></div>
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      <section className="story-manifesto">
-        <p className="chapter">Chapter III · Philosophy</p>
-        <p className="manifesto-line">POWERFUL <em>when needed.</em></p>
-        <p className="manifesto-line align-right">SIMPLE <em>when used.</em></p>
-        <p className="manifesto-line">FAST <em>by design.</em></p>
-      </section>
-
-      <section className="story-lab">
-        <header className="story-section-head">
-          <p className="chapter">The lab</p>
-          <h2>Things I&apos;m<br /><em>building.</em></h2>
-        </header>
-        <div className="lab-list">
-          {projects.map((project, index) => (
-            <Link href={`/work/${project.slug}`} key={project.slug}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <strong>{project.name}</strong>
-              <span>{project.category}</span>
-              <span>{project.technologies.join(" · ")}</span>
-              <span>↗</span>
-            </Link>
+      <section className="editorial-section capability-section">
+        <div className="section-label"><span>04</span><span>What I build</span></div>
+        <div className="capability-list">
+          {capabilities.map(([title, body], index) => (
+            <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{body}</p></article>
           ))}
         </div>
-        {experiments.length > 0 && <p className="lab-note">Experiments are shown as active explorations, not finished products.</p>}
       </section>
 
-      <section className="story-engineering">
-        <p className="chapter">Chapter IV · Engineering</p>
-        <h2>Behind the interface,<br />there is <em>engineering.</em></h2>
-        <div className="engineering-words">
-          <span>Framework Design</span><span>Application Architecture</span><span>Developer Experience</span><span>Performance</span><span>Frontend Engineering</span>
+      <section className="editorial-section principles-section">
+        <div className="section-label light"><span>05</span><span>How I think</span></div>
+        <p><span>01</span>Clarity<br />before<br /><em>cleverness.</em></p>
+        <p className="right"><span>02</span>Developer<br />experience is<br /><em>architecture.</em></p>
+        <p><span>03</span>Performance<br />with<br /><em>purpose.</em></p>
+      </section>
+
+      <section className="editorial-section technology-section">
+        <div className="section-label"><span>06</span><span>Tools</span></div>
+        <h2 className="section-title">Tools I work with.</h2>
+        <div className="technology-grid">
+          {Object.entries(technologies).map(([group, items]) => (
+            <div key={group}><h3>{group}</h3><p>{items.join(" · ")}</p></div>
+          ))}
         </div>
-        <Link href="/about">More about how I work ↗</Link>
       </section>
 
-      <section className="story-about">
-        <div className="portrait-placeholder" aria-hidden="true"><span>JAP</span></div>
-        <div>
-          <p className="chapter">Chapter V · About</p>
+      <section className="editorial-section about-preview">
+        <div className="profile-visual" aria-hidden="true"><span>JAP</span></div>
+        <div className="profile-copy">
+          <div className="section-label"><span>07</span><span>Profile</span></div>
           <h2>More than<br />just code.</h2>
-          <p>I care about turning complex technical ideas into products and tools that developers can reason about, maintain and enjoy using.</p>
-          <Link href="/about">About me ↗</Link>
+          <p>I enjoy taking systems that feel complicated and finding a structure that makes them easier to understand, build and maintain.</p>
+          <Link href="/about">Read about me ↗</Link>
         </div>
       </section>
 
-      <section className="story-contact">
-        <p className="chapter">Start a conversation</p>
-        <h2>Have something<br />worth <em>building?</em></h2>
+      <section className="editorial-contact">
+        <div className="section-label light"><span>08</span><span>Contact</span></div>
+        <h2>Have something<br />worth building?</h2>
         <Link href="/contact">LET&apos;S TALK. ↗</Link>
-        <div><span>{siteConfig.location}</span><span>GitHub · Portfolio 2026</span></div>
       </section>
     </main>
   );
