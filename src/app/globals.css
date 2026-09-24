@@ -2357,3 +2357,25 @@ summary:focus-visible,
     color: var(--color-ink);
   }
 }
+
+
+/* Performance containment */
+@supports (content-visibility: auto) {
+  .home-section,
+  .work-index,
+  .engineering-section,
+  .about-section,
+  .resume-section,
+  .contact-section,
+  .case-study-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 48rem;
+  }
+}
+
+.blueprint-frame,
+.project-link,
+.engineering-principle-list article,
+.about-focus-grid article {
+  contain: layout paint;
+}
