@@ -2281,3 +2281,79 @@ code,
     font-size: clamp(5rem, 7vw, 7.5rem);
   }
 }
+
+
+/* Accessibility hardening */
+#main-content:focus {
+  outline: none;
+}
+
+a,
+button,
+summary,
+[tabindex]:not([tabindex="-1"]) {
+  -webkit-tap-highlight-color: rgb(17 17 17 / 12%);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  min-height: 2.75rem;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline-color: var(--color-paper-warm);
+  outline-offset: 3px;
+}
+
+.mobile-navigation summary {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+}
+
+.project-link,
+.contact-methods a,
+.contact-note__email {
+  touch-action: manipulation;
+}
+
+@media (forced-colors: active) {
+  .ink-rule,
+  .status-indicator__dot {
+    background: CanvasText;
+  }
+
+  .tag,
+  .metadata-list,
+  .project-link,
+  .blueprint-frame,
+  .system-flow__node,
+  .layer-diagram li,
+  .relationship-diagram__nodes li {
+    border-color: CanvasText;
+  }
+
+  :focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --color-ink-deep: #111111;
+    --border-hairline: 1px solid rgb(17 17 17 / 55%);
+  }
+
+  .muted,
+  .project-link__summary,
+  .contact-methods p {
+    color: var(--color-ink);
+  }
+}
