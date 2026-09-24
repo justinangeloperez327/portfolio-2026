@@ -15,7 +15,7 @@ export function EngineeringPrinciples() {
         <SectionHeading>Principles behind the implementation.</SectionHeading>
       </div>
       <EditorialGrid>
-        {principles.map((principle, index) => (
+        {principles.map((principle) => (
           <article className="principle" key={principle.title}>
             <span className="technical-label">{principle.number}</span>
             <h3>{principle.title}</h3>
