@@ -1,40 +1,39 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ProjectVisual } from "@/components/project/project-visual";
+import { BrushDivider, InkMark, InkReveal, InkWash, RedSeal } from "@/components/visual";
 import { siteConfig } from "@/config/site";
 import { projects } from "@/data/projects";
 
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
-const capabilities = [
+const principles = [
   {
-    title: "Framework Engineering",
-    body: "Designing conventions, APIs, tooling, data layers and framework-owned workflows that make application development feel coherent.",
+    title: "Clarity before cleverness.",
+    body: "APIs, boundaries, and naming should make a system easier to reason about before they make it impressive.",
   },
   {
-    title: "Product Engineering",
-    body: "Building web products with clear information architecture, maintainable frontend systems, resilient APIs and deliberate interaction design.",
+    title: "Complexity belongs inside the system.",
+    body: "Framework plumbing should absorb repetitive work without hiding the ideas a developer still needs to understand.",
   },
   {
-    title: "Developer Experience",
-    body: "Reducing friction through better defaults, naming, documentation, errors and workflows instead of hiding complexity behind magic.",
+    title: "Performance is part of design.",
+    body: "Good developer experience and efficient execution should reinforce each other rather than compete.",
   },
 ] as const;
 
 export default function HomePage() {
   const featured = projects.filter((project) => project.featured);
+
   const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: siteConfig.name,
     jobTitle: siteConfig.title,
     url: siteConfig.url,
-    sameAs: ["https://github.com/justinangeloperez327"],
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Abu Dhabi",
-      addressCountry: "AE",
-    },
+    sameAs: [siteConfig.social.github],
     knowsAbout: [
       "Framework design",
       "Web application development",
@@ -44,129 +43,113 @@ export default function HomePage() {
   };
 
   return (
-    <main className="home">
+    <main className="sumi-home">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
 
-      <section className="hero">
-        <div className="hero__copy">
-          <div className="hero__eyebrow">
-            <span>Software Developer</span>
-            <span>Abu Dhabi · UAE</span>
-          </div>
-          <h1>
-            Software with
-            <br />
-            <em>less friction.</em>
-          </h1>
-          <p className="hero__lede">
-            I design frameworks, products and developer tools around clarity,
-            speed and a better development experience.
-          </p>
-          <div className="hero__actions">
-            <Link className="button button--primary" href="/work">
-              View selected work <span aria-hidden="true">↗</span>
-            </Link>
-            <a
-              className="button button--ghost"
-              href="https://github.com/justinangeloperez327"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub <span aria-hidden="true">↗</span>
-            </a>
+      <section className="sumi-hero" aria-labelledby="home-title">
+        <InkWash className="sumi-hero__wash sumi-hero__wash--one" size="lg" />
+        <InkWash className="sumi-hero__wash sumi-hero__wash--two" size="md" />
+
+        <div className="sumi-hero__meta">
+          <span>Software Developer</span>
+          <span>Portfolio · 2026</span>
+        </div>
+
+        <div className="sumi-hero__grid">
+          <InkReveal className="sumi-hero__copy">
+            <p className="sumi-kicker">Frameworks · Products · Developer tools</p>
+            <h1 id="home-title">
+              Justin Angelo
+              <br />
+              <em>Perez.</em>
+            </h1>
+            <p className="sumi-hero__lede">
+              I build software systems that make difficult engineering feel
+              clearer, faster, and easier to work with.
+            </p>
+            <div className="sumi-actions">
+              <Link href="/projects">View projects <span aria-hidden="true">↗</span></Link>
+              <Link href="/about">About me <span aria-hidden="true">↗</span></Link>
+            </div>
+          </InkReveal>
+
+          <div className="sumi-hero__art" aria-hidden="true">
+            <InkMark className="sumi-hero__mark" />
+            <div className="sumi-hero__figure">
+              <span>Software</span>
+              <strong>01</strong>
+              <span>Systems</span>
+            </div>
+            <RedSeal />
           </div>
         </div>
 
-        <div className="hero__system" aria-label="Current engineering focus">
-          <div className="hero__system-head">
-            <span>Current focus</span>
-            <span className="live-status"><i /> Building</span>
-          </div>
-          <div className="hero__system-title">
-            <span>01</span>
-            <strong>Developer experience is part of the architecture.</strong>
-          </div>
-          <div className="hero__system-grid">
-            <div><span>Frameworks</span><strong>Berserk · Gungnir</strong></div>
-            <div><span>Language</span><strong>Densleaf</strong></div>
-            <div><span>Frontend</span><strong>Quagmire</strong></div>
-            <div><span>Product</span><strong>Construction systems</strong></div>
-          </div>
-          <div className="hero__signal" aria-hidden="true">
-            <span /><span /><span /><span /><span /><span />
-          </div>
+        <div className="sumi-hero__foot">
+          <span>{siteConfig.location}</span>
+          <span>Scroll to explore ↓</span>
         </div>
       </section>
 
-      <section className="intro" id="about">
-        <div className="section-kicker">
-          <span>About</span>
+      <section className="sumi-intro">
+        <div className="sumi-section-index">
           <span>01</span>
+          <span>Philosophy</span>
         </div>
-        <div className="intro__grid">
+        <div className="sumi-intro__grid">
           <h2>
             I like hard systems.
             <br />
-            I just don&apos;t think
-            <br />
-            they should <em>feel hard.</em>
+            I just don&apos;t think they should <em>feel hard.</em>
           </h2>
-          <div className="intro__copy">
+          <div>
             <p>
               My work moves between application development, framework design,
-              language experiments and software architecture.
+              language experiments, and software architecture.
             </p>
             <p>
-              I focus on the parts developers feel every day: APIs, naming,
-              workflows, defaults, performance and the boundaries that make a
+              I focus on the details developers feel every day: naming,
+              workflows, defaults, performance, and boundaries that make a
               system understandable.
             </p>
-            <Link className="text-link" href="/about">
-              More about how I work <span aria-hidden="true">↗</span>
-            </Link>
+            <Link className="sumi-text-link" href="/about">How I approach software ↗</Link>
           </div>
         </div>
       </section>
 
-      <section className="selected-work">
-        <div className="section-kicker">
-          <span>Selected work</span>
+      <section className="sumi-projects">
+        <div className="sumi-section-index">
           <span>02</span>
+          <span>Selected Projects</span>
+        </div>
+        <div className="sumi-projects__heading">
+          <h2>Ideas turned into systems.</h2>
+          <Link className="sumi-text-link" href="/projects">All projects ↗</Link>
         </div>
 
-        <div className="selected-work__intro">
-          <h2>Projects built to test better ways of building software.</h2>
-          <Link className="text-link" href="/work">
-            See all work <span aria-hidden="true">↗</span>
-          </Link>
-        </div>
-
-        <div className="project-stack">
+        <div className="sumi-projects__list">
           {featured.map((project, index) => (
-            <article className="project-feature" key={project.slug}>
-              <Link href={`/work/${project.slug}`} className="project-feature__visual">
+            <article className="sumi-project" key={project.slug}>
+              <Link className="sumi-project__visual" href={`/projects/${project.slug}`}>
                 <ProjectVisual slug={project.slug} />
               </Link>
-              <div className="project-feature__content">
-                <div className="project-feature__meta">
+              <div className="sumi-project__copy">
+                <div className="sumi-project__meta">
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <span>{project.category}</span>
                   <span>{project.status}</span>
                 </div>
-                <h3>
-                  <Link href={`/work/${project.slug}`}>{project.name}</Link>
-                </h3>
+                <h3><Link href={`/projects/${project.slug}`}>{project.name}</Link></h3>
                 <p>{project.summary}</p>
-                <div className="project-feature__stack">
+                <div className="sumi-project__stack">
                   {project.technologies.map((technology) => (
                     <span key={technology}>{technology}</span>
                   ))}
                 </div>
-                <Link className="text-link" href={`/work/${project.slug}`}>
-                  Explore case study <span aria-hidden="true">↗</span>
+                <Link className="sumi-text-link" href={`/projects/${project.slug}`}>
+                  Explore project ↗
                 </Link>
               </div>
             </article>
@@ -174,57 +157,53 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="capabilities">
-        <div className="section-kicker section-kicker--light">
-          <span>What I do</span>
+      <section className="sumi-principles">
+        <InkWash className="sumi-principles__wash" size="lg" />
+        <div className="sumi-section-index sumi-section-index--light">
           <span>03</span>
+          <span>Engineering Philosophy</span>
         </div>
-        <div className="capabilities__heading">
-          <h2>Build the system.<br />Improve the experience.</h2>
+        <div className="sumi-principles__statement">
+          <h2>
+            Complexity belongs
+            <br />
+            <em>inside the system.</em>
+          </h2>
           <p>
-            Good engineering is not only about what the system can do. It is
-            also about how clearly people can understand, operate and extend it.
+            The interface a developer touches should be deliberate, legible,
+            and proportionate to the problem being solved.
           </p>
         </div>
-        <div className="capabilities__list">
-          {capabilities.map((capability, index) => (
-            <article key={capability.title}>
+        <div className="sumi-principles__list">
+          {principles.map((principle, index) => (
+            <article key={principle.title}>
               <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{capability.title}</h3>
-              <p>{capability.body}</p>
+              <h3>{principle.title}</h3>
+              <p>{principle.body}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="build-strip">
-        <div>
-          <span>Now building</span>
-          <strong>Berserk</strong>
-          <span>Enterprise Rust framework</span>
-        </div>
-        <div>
-          <span>Exploring</span>
-          <strong>Densleaf</strong>
-          <span>Application-oriented language</span>
-        </div>
-        <div>
-          <span>Shipping with</span>
-          <strong>React + .NET</strong>
-          <span>Product systems</span>
-        </div>
-      </section>
-
-      <section className="home-contact">
-        <div className="section-kicker section-kicker--light">
-          <span>Contact</span>
+      <section className="sumi-contact">
+        <BrushDivider />
+        <div className="sumi-section-index">
           <span>04</span>
+          <span>Contact</span>
         </div>
-        <div className="home-contact__content">
-          <h2>Have a difficult software problem?</h2>
-          <Link href="/contact">
-            Let&apos;s talk <span aria-hidden="true">↗</span>
-          </Link>
+        <div className="sumi-contact__grid">
+          <h2>
+            Have something
+            <br />
+            difficult to build?
+          </h2>
+          <div>
+            <p>
+              If the problem involves software architecture, frameworks,
+              products, or developer tooling, start with the problem.
+            </p>
+            <Link href="/contact">Let&apos;s talk <span aria-hidden="true">↗</span></Link>
+          </div>
         </div>
       </section>
     </main>

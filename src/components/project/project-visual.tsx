@@ -1,3 +1,5 @@
+import { InkWash } from "@/components/visual";
+
 type ProjectVisualProps = {
   slug: string;
   compact?: boolean;
@@ -51,13 +53,12 @@ export function ProjectVisual({ slug, compact = false }: ProjectVisualProps) {
 
   return (
     <div className={`project-visual project-visual--${slug} ${compact ? "project-visual--compact" : ""}`}>
-      <div className="project-visual__chrome">
-        <span className="project-visual__dot" />
-        <span className="project-visual__dot" />
-        <span className="project-visual__dot" />
-        <span className="project-visual__path">~/projects/{slug}</span>
+      <InkWash className="project-visual__wash" size="lg" />
+      <div className="project-visual__ink" aria-hidden="true">
+        <span />
+        <span />
+        <span />
       </div>
-
       <div className="project-visual__canvas">
         <div className="project-visual__copy">
           <span className="project-visual__eyebrow">{item.eyebrow}</span>
