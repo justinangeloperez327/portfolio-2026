@@ -11,5 +11,9 @@ export function SectionHeading({
   className = "",
   as: Component = "h2",
 }: SectionHeadingProps) {
-  return <Component className={`heading ${className}`.trim()}>{children}</Component>;
+  return (
+    <Component className={`type-section-heading ${className}`.trim()}>
+      {children}
+    </Component>
+  );
 }
