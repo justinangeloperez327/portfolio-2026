@@ -1132,7 +1132,7 @@ body,
 
 .sumi-hero--layered .sumi-hero__layer {
   position: absolute;
-  inset: -1.5%;
+  inset: -0.5%;
   overflow: hidden;
   will-change: transform, opacity;
 }
@@ -1160,7 +1160,7 @@ body,
 .sumi-hero--layered .sumi-hero__layer-image {
   object-fit: cover;
   object-position: center center;
-  scale: 1.02;
+  scale: 1.005;
   transition: transform 220ms ease-out;
   will-change: transform;
 }
@@ -1274,7 +1274,7 @@ body,
 @keyframes hero-background-assemble {
   from {
     opacity: 0;
-    transform: scale(1.035);
+    transform: scale(1.015);
   }
 
   to {
@@ -1286,7 +1286,7 @@ body,
 @keyframes hero-mid-assemble {
   from {
     opacity: 0;
-    transform: translate3d(24px, -10px, 0) scale(1.015);
+    transform: translate3d(24px, -10px, 0) scale(1.008);
   }
 
   to {
@@ -1298,7 +1298,7 @@ body,
 @keyframes hero-character-assemble {
   from {
     opacity: 0;
-    transform: translate3d(40px, 8px, 0) scale(1.025);
+    transform: translate3d(40px, 8px, 0) scale(1.012);
   }
 
   to {
@@ -1310,7 +1310,7 @@ body,
 @keyframes hero-foreground-assemble {
   from {
     opacity: 0;
-    transform: translate3d(0, 20px, 0) scale(1.01);
+    transform: translate3d(0, 20px, 0) scale(1.006);
   }
 
   to {
@@ -1331,7 +1331,7 @@ body,
 
 @media (max-width: 48rem) {
   .sumi-hero--layered .sumi-hero__layer {
-    inset: -2.5%;
+    inset: -1%;
   }
 
   .sumi-hero--layered .sumi-hero__layer-image {
