@@ -10,6 +10,8 @@ export function TechnicalLabel({
   className = "",
 }: TechnicalLabelProps) {
   return (
-    <span className={`technical-label ${className}`.trim()}>{children}</span>
+    <span className={`type-technical-label ${className}`.trim()}>
+      {children}
+    </span>
   );
 }
