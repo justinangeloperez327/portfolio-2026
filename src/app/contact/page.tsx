@@ -14,7 +14,16 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="sumi-page contact-page-v3">
-      <header className="sumi-page-hero">
+      <header className="sumi-page-hero contact-hero">
+        <Image
+          src="/contact-hero.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="contact-hero__background"
+        />
+        <div className="contact-hero__background-wash" aria-hidden="true" />
         <InkWash className="sumi-page-hero__wash" size="lg" />
         <div className="sumi-section-index"><span>Contact</span><span>Start here</span></div>
         <div className="sumi-page-hero__grid contact-hero__grid">
@@ -25,16 +34,6 @@ export default function ContactPage() {
               A concise first message is enough.
             </p>
             <RedSeal />
-          </div>
-          <div className="contact-hero__image-frame">
-            <Image
-              src="/contact-hero.png"
-              alt="Sumi-e inspired contact artwork"
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 42vw"
-              className="contact-hero__image"
-            />
           </div>
         </div>
       </header>
