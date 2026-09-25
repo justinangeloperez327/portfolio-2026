@@ -4886,3 +4886,268 @@ body {
     overflow-wrap: anywhere;
   }
 }
+
+
+/* Typography system v4 */
+:root {
+  --type-display: clamp(4.8rem, 10.8vw, 10.8rem);
+  --type-page: clamp(4.4rem, 9.5vw, 9.5rem);
+  --type-section: clamp(3.1rem, 6.4vw, 6.4rem);
+  --type-project: clamp(3rem, 5.6vw, 5.8rem);
+  --type-card: clamp(1.75rem, 3vw, 2.8rem);
+  --type-lede: clamp(1.05rem, 1.35vw, 1.2rem);
+  --type-body: 1rem;
+  --type-label: 0.68rem;
+}
+
+.type-display,
+.identity-display,
+.page-display,
+.section-display,
+.project-name {
+  font-family: var(--font-sans);
+  font-style: normal;
+  text-wrap: balance;
+}
+
+.type-display,
+.identity-display {
+  font-size: var(--type-display);
+  font-weight: 600;
+  line-height: 0.84;
+  letter-spacing: -0.07em;
+}
+
+.identity-display span,
+.footer-title span {
+  display: block;
+}
+
+.page-display {
+  font-size: var(--type-page);
+  font-weight: 580;
+  line-height: 0.86;
+  letter-spacing: -0.065em;
+}
+
+.section-display {
+  font-size: var(--type-section);
+  font-weight: 560;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.section-display--light {
+  color: var(--paper);
+}
+
+.project-name {
+  font-size: var(--type-project);
+  font-weight: 580;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.type-section-heading {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--type-section);
+  font-weight: 560;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.type-editorial-accent,
+.editorial-statement .type-editorial-accent,
+.page-display .type-editorial-accent {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.editorial-statement {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--type-section);
+  font-weight: 540;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.editorial-statement--light {
+  color: var(--paper);
+}
+
+.type-eyebrow,
+.type-technical-label,
+.sumi-kicker,
+.sumi-section-index,
+.sumi-project__meta,
+.sumi-hero__meta,
+.sumi-hero__foot,
+.site-footer__eyebrow,
+.section-kicker,
+.case-section__index,
+.case-nav > span {
+  font-family: var(--font-sans);
+  font-size: var(--type-label);
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.type-lede,
+.sumi-hero__lede {
+  max-width: 36rem;
+  font-family: var(--font-sans);
+  font-size: var(--type-lede);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -0.012em;
+}
+
+.type-prose,
+.type-prose p,
+.case-section__copy,
+.case-section__copy p,
+.sumi-project__copy > p,
+.projects-index__copy > p,
+.about-v3-story p,
+.about-v3-process p,
+.contact-v3-methods p,
+.contact-v3-guidance p {
+  font-family: var(--font-sans);
+  font-size: var(--type-body);
+  line-height: 1.7;
+  letter-spacing: -0.008em;
+}
+
+.sumi-hero h1 {
+  font-family: var(--font-sans);
+  font-size: var(--type-display);
+  font-weight: 600;
+  line-height: 0.84;
+  letter-spacing: -0.07em;
+}
+
+.sumi-hero h1 em,
+.sumi-page-hero h1 em,
+.about-v3-process__heading em,
+.sumi-intro h2 em,
+.sumi-principles h2 em {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+
+.sumi-intro h2,
+.sumi-projects__heading h2,
+.sumi-principles h2,
+.sumi-contact h2,
+.about-v3-story h2,
+.about-v3-process h2,
+.contact-v3-guidance h2 {
+  font-family: var(--font-sans);
+}
+
+.sumi-project h3,
+.projects-index__copy h2 {
+  font-family: var(--font-sans);
+  font-size: var(--type-project);
+  font-weight: 580;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.sumi-principles__list h3,
+.about-v3-principles h3,
+.about-v3-focus h3,
+.contact-v3-reasons article strong {
+  font-family: var(--font-sans);
+  font-weight: 580;
+  letter-spacing: -0.03em;
+}
+
+.project-visual__copy strong {
+  font-family: var(--font-sans);
+  font-weight: 570;
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+}
+
+.project-visual__eyebrow,
+.project-visual__metrics,
+.project-visual__code,
+.sumi-project__stack,
+.about-v3-stack__list,
+.contact-v3-methods small {
+  font-family: var(--font-sans);
+}
+
+.case-hero__title h1 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 0.86;
+  letter-spacing: -0.065em;
+}
+
+.case-section__content h2 {
+  font-family: var(--font-sans);
+  font-weight: 580;
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+}
+
+.contact-v3-methods strong {
+  font-family: var(--font-sans);
+  font-weight: 560;
+  letter-spacing: -0.035em;
+}
+
+.footer-title {
+  max-width: none;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(3.8rem, 8.5vw, 8.5rem);
+  font-weight: 600;
+  line-height: 0.84;
+  letter-spacing: -0.065em;
+}
+
+.mobile-navigation a {
+  font-family: var(--font-sans);
+  font-weight: 580;
+  letter-spacing: -0.035em;
+}
+
+.primary-navigation a,
+.site-footer a,
+.sumi-actions a,
+.sumi-text-link,
+.sumi-contact__grid a,
+.contact-v3-guidance > a {
+  font-weight: 650;
+  letter-spacing: 0.075em;
+}
+
+@media (max-width: 48rem) {
+  :root {
+    --type-display: clamp(4rem, 17vw, 6.2rem);
+    --type-page: clamp(3.8rem, 16vw, 5.8rem);
+    --type-section: clamp(2.8rem, 12.5vw, 4.6rem);
+    --type-project: clamp(2.7rem, 12vw, 4.25rem);
+  }
+
+  .identity-display {
+    letter-spacing: -0.065em;
+  }
+
+  .footer-title {
+    font-size: clamp(3.4rem, 14vw, 5.4rem);
+  }
+}
