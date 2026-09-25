@@ -11,5 +11,9 @@ export function DisplayHeading({
   className = "",
   as: Component = "h1",
 }: DisplayHeadingProps) {
-  return <Component className={`display ${className}`.trim()}>{children}</Component>;
+  return (
+    <Component className={`type-display ${className}`.trim()}>
+      {children}
+    </Component>
+  );
 }
