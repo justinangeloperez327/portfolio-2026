@@ -27,8 +27,6 @@ const principles = [
 ] as const;
 
 export default function HomePage() {
-  const featured = projects.filter((project) => project.featured);
-
   const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -137,25 +135,25 @@ export default function HomePage() {
         </div>
 
         <div className="sumi-projects__list">
-          {featured.map((project, index) => {
+          {projects.map((project, index) => {
             const mirrored = (index + 1) % 2 === 0;
 
             return (
               <article
-                className={`sumi-project sumi-project--landscape ${mirrored ? "sumi-project--mirrored" : ""}`}
+                className={`home-project-card ${mirrored ? "home-project-card--mirrored" : ""}`}
                 key={project.slug}
               >
                 <Link
-                  className="sumi-project__visual"
+                  className="home-project-card__visual"
                   href={`/projects/${project.slug}`}
                   aria-label={`View ${project.name} project`}
                 >
                   <ProjectVisual slug={project.slug} mirrored={mirrored} />
                 </Link>
 
-                <div className="sumi-project__overlay" aria-hidden="true" />
+                <div className="home-project-card__overlay" aria-hidden="true" />
 
-                <div className="sumi-project__copy">
+                <div className="home-project-card__copy">
                   <div className="sumi-project__meta">
                     <span>{String(index + 1).padStart(2, "0")}</span>
                     <span>{project.category}</span>
