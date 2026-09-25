@@ -1104,3 +1104,276 @@ body,
     padding-bottom: 2rem;
   }
 }
+
+/* Homepage layered hero v4 */
+.sumi-hero--layered {
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--paper);
+  background: var(--dark);
+}
+
+.sumi-hero--layered .sumi-hero__layers {
+  --hero-background-x: 0px;
+  --hero-background-y: 0px;
+  --hero-mid-x: 0px;
+  --hero-mid-y: 0px;
+  --hero-character-x: 0px;
+  --hero-character-y: 0px;
+  --hero-foreground-x: 0px;
+  --hero-foreground-y: 0px;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--dark);
+}
+
+.sumi-hero--layered .sumi-hero__layer {
+  position: absolute;
+  inset: -1.5%;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.sumi-hero--layered .sumi-hero__layer--background {
+  z-index: 0;
+  animation: hero-background-assemble 900ms cubic-bezier(0.2, 0.7, 0, 1) both;
+}
+
+.sumi-hero--layered .sumi-hero__layer--mid {
+  z-index: 1;
+  animation: hero-mid-assemble 1050ms 120ms cubic-bezier(0.2, 0.7, 0, 1) both;
+}
+
+.sumi-hero--layered .sumi-hero__layer--character {
+  z-index: 2;
+  animation: hero-character-assemble 1100ms 220ms cubic-bezier(0.16, 0.8, 0, 1) both;
+}
+
+.sumi-hero--layered .sumi-hero__layer--foreground {
+  z-index: 3;
+  animation: hero-foreground-assemble 950ms 380ms cubic-bezier(0.2, 0.7, 0, 1) both;
+}
+
+.sumi-hero--layered .sumi-hero__layer-image {
+  object-fit: cover;
+  object-position: center center;
+  scale: 1.02;
+  transition: transform 220ms ease-out;
+  will-change: transform;
+}
+
+.sumi-hero--layered
+  .sumi-hero__layer--background
+  .sumi-hero__layer-image {
+  transform: translate3d(
+    var(--hero-background-x),
+    var(--hero-background-y),
+    0
+  );
+}
+
+.sumi-hero--layered .sumi-hero__layer--mid .sumi-hero__layer-image {
+  transform: translate3d(var(--hero-mid-x), var(--hero-mid-y), 0);
+}
+
+.sumi-hero--layered
+  .sumi-hero__layer--character
+  .sumi-hero__layer-image {
+  transform: translate3d(
+    var(--hero-character-x),
+    var(--hero-character-y),
+    0
+  );
+}
+
+.sumi-hero--layered
+  .sumi-hero__layer--foreground
+  .sumi-hero__layer-image {
+  transform: translate3d(
+    var(--hero-foreground-x),
+    var(--hero-foreground-y),
+    0
+  );
+}
+
+.sumi-hero--layered .sumi-hero__background-wash {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgb(13 13 12 / 94%) 0%,
+      rgb(13 13 12 / 82%) 25%,
+      rgb(13 13 12 / 52%) 43%,
+      rgb(13 13 12 / 16%) 62%,
+      transparent 76%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(13 13 12 / 16%) 0%,
+      transparent 50%,
+      rgb(13 13 12 / 42%) 100%
+    );
+}
+
+.sumi-hero--layered .sumi-hero__meta,
+.sumi-hero--layered .sumi-hero__grid,
+.sumi-hero--layered .sumi-hero__foot {
+  position: relative;
+  z-index: 6;
+}
+
+.sumi-hero--layered .sumi-hero__grid {
+  grid-template-columns: minmax(0, 0.95fr) minmax(18rem, 1.05fr);
+}
+
+.sumi-hero--layered .sumi-hero__copy {
+  grid-column: 1;
+  justify-self: start;
+  width: min(100%, 48rem);
+  max-width: none;
+  color: var(--paper);
+}
+
+.sumi-hero--layered .sumi-hero__art {
+  grid-column: 2;
+  grid-row: 1;
+  pointer-events: none;
+}
+
+.sumi-hero--layered .sumi-hero__art .red-seal {
+  right: clamp(0.5rem, 2vw, 2rem);
+  left: auto;
+}
+
+.sumi-hero--layered .sumi-kicker,
+.sumi-hero--layered .sumi-hero__meta,
+.sumi-hero--layered .sumi-hero__foot {
+  color: rgb(247 245 239 / 70%);
+}
+
+.sumi-hero--layered h1,
+.sumi-hero--layered .sumi-hero__lede,
+.sumi-hero--layered .sumi-actions a {
+  color: var(--paper);
+}
+
+.sumi-hero--layered .sumi-hero__lede {
+  color: rgb(247 245 239 / 78%);
+}
+
+.sumi-hero--layered .sumi-actions a {
+  border-color: rgb(247 245 239 / 42%);
+}
+
+@keyframes hero-background-assemble {
+  from {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-mid-assemble {
+  from {
+    opacity: 0;
+    transform: translate3d(24px, -10px, 0) scale(1.015);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes hero-character-assemble {
+  from {
+    opacity: 0;
+    transform: translate3d(40px, 8px, 0) scale(1.025);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes hero-foreground-assemble {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(1.01);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@media (max-width: 72rem) {
+  .sumi-hero--layered .sumi-hero__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.8fr);
+  }
+
+  .sumi-hero--layered .sumi-hero__copy {
+    width: min(100%, 42rem);
+  }
+}
+
+@media (max-width: 48rem) {
+  .sumi-hero--layered .sumi-hero__layer {
+    inset: -2.5%;
+  }
+
+  .sumi-hero--layered .sumi-hero__layer-image {
+    object-position: 70% center;
+  }
+
+  .sumi-hero--layered .sumi-hero__background-wash {
+    background:
+      linear-gradient(
+        180deg,
+        rgb(13 13 12 / 44%) 0%,
+        rgb(13 13 12 / 24%) 30%,
+        rgb(13 13 12 / 68%) 63%,
+        rgb(13 13 12 / 97%) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgb(13 13 12 / 62%) 0%,
+        rgb(13 13 12 / 20%) 64%,
+        transparent 100%
+      );
+  }
+
+  .sumi-hero--layered .sumi-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sumi-hero--layered .sumi-hero__copy {
+    grid-column: 1;
+    justify-self: stretch;
+    width: 100%;
+    padding-bottom: clamp(3rem, 10vh, 6rem);
+    align-self: end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sumi-hero--layered .sumi-hero__layer {
+    animation: none;
+  }
+
+  .sumi-hero--layered .sumi-hero__layer-image {
+    transition: none;
+  }
+}

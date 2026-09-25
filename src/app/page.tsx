@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { LayeredHeroArt } from "@/components/home/layered-hero-art";
 import { ProjectVisual } from "@/components/project/project-visual";
 import { EditorialAccent } from "@/components/typography";
 import { BrushDivider, InkReveal, InkWash, RedSeal } from "@/components/visual";
@@ -49,18 +49,9 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
 
-      <section className="sumi-hero" aria-labelledby="home-title">
-        <Image
-          src="/home-hero.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="sumi-hero__background"
-        />
+      <section className="sumi-hero sumi-hero--layered" aria-labelledby="home-title">
+        <LayeredHeroArt />
         <div className="sumi-hero__background-wash" aria-hidden="true" />
-        <InkWash className="sumi-hero__wash sumi-hero__wash--one" size="lg" />
-        <InkWash className="sumi-hero__wash sumi-hero__wash--two" size="md" />
 
         <div className="sumi-hero__meta">
           <span>Software Developer</span>
