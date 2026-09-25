@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { EditorialAccent } from "@/components/typography";
 import { BrushDivider, InkWash, RedSeal } from "@/components/visual";
 import { contactConversationAreas, contactMethods } from "@/content";
@@ -16,14 +17,24 @@ export default function ContactPage() {
       <header className="sumi-page-hero">
         <InkWash className="sumi-page-hero__wash" size="lg" />
         <div className="sumi-section-index"><span>Contact</span><span>Start here</span></div>
-        <div className="sumi-page-hero__grid">
-          <h1 className="page-display">Let&apos;s build<br /><EditorialAccent>something.</EditorialAccent></h1>
-          <div>
+        <div className="sumi-page-hero__grid contact-hero__grid">
+          <div className="contact-hero__copy">
+            <h1 className="page-display">Let&apos;s build<br /><EditorialAccent>something.</EditorialAccent></h1>
             <p>
               Have a project, collaboration, or technical problem worth discussing?
               A concise first message is enough.
             </p>
             <RedSeal />
+          </div>
+          <div className="contact-hero__image-frame">
+            <Image
+              src="/contact-hero.png"
+              alt="Sumi-e inspired contact artwork"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 42vw"
+              className="contact-hero__image"
+            />
           </div>
         </div>
       </header>
