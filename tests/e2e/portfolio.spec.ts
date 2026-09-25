@@ -4,7 +4,7 @@ test("homepage exposes identity and navigation", async ({ page }) => {
   await page.goto("/");
 
   await expect(
-    page.getByRole("heading", { name: "Justin Angelo Perez." }),
+    page.getByRole("heading", { name: "Justin Angelo Perez" }),
   ).toBeVisible();
   await expect(
     page.getByRole("navigation", { name: "Primary navigation" }),
