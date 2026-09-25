@@ -1,88 +1,43 @@
-import { InkWash } from "@/components/visual";
+import Image from "next/image";
 
 type ProjectVisualProps = {
   slug: string;
   compact?: boolean;
 };
 
-const visualContent = {
+const projectImages = {
   berserk: {
-    eyebrow: "Rust · Web framework",
-    title: "Application code, not framework plumbing.",
-    code: [
-      "route.get('/users', UserController.index)",
-      "const users = await User.with('projects').all()",
-      "return Response.ok(users)",
-    ],
-    metrics: ["Typed routing", "ORM", "Validation"],
+    src: "/project-berserk.png",
+    alt: "Berserk project artwork",
   },
   gungnir: {
-    eyebrow: "C++ · Async framework",
-    title: "High performance without ceremony.",
-    code: [
-      "Response async index() {",
-      "  auto users = co_await User::all();",
-      "  co_return Response::ok(users);",
-    ],
-    metrics: ["Coroutines", "IoC", "HTTP runtime"],
+    src: "/project-gungnir.png",
+    alt: "Gungnir project artwork",
   },
   densleaf: {
-    eyebrow: "Rust · Language design",
-    title: "Application concepts as language.",
-    code: [
-      "model User {",
-      "  hasMany posts",
-      "  email: string",
-    ],
-    metrics: ["Grammar", "Compiler", "Application DX"],
+    src: "/project-densleaf.png",
+    alt: "Densleaf project artwork",
   },
   quagmire: {
-    eyebrow: "Frontend · Compiler",
-    title: "Reactivity that reads like intent.",
-    code: [
-      "state count = 0",
-      "computed doubled = count * 2",
-      "mount { render(App) }",
-    ],
-    metrics: ["Computed", "Mount", "Reactive runtime"],
+    src: "/project-quagmire.png",
+    alt: "Quagmire project artwork",
   },
 } as const;
 
 export function ProjectVisual({ slug, compact = false }: ProjectVisualProps) {
-  const item = visualContent[slug as keyof typeof visualContent] ?? visualContent.berserk;
+  const image = projectImages[slug as keyof typeof projectImages] ?? projectImages.berserk;
 
   return (
-    <div className={`project-visual project-visual--${slug} ${compact ? "project-visual--compact" : ""}`}>
-      <InkWash className="project-visual__wash" size="lg" />
-      <div className="project-visual__ink" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-      </div>
-      <div className="project-visual__canvas">
-        <div className="project-visual__copy">
-          <span className="project-visual__eyebrow">{item.eyebrow}</span>
-          <strong>{item.title}</strong>
-        </div>
-
-        <div className="project-visual__code" aria-hidden="true">
-          {item.code.map((line, index) => (
-            <div key={line}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <code>{line}</code>
-            </div>
-          ))}
-        </div>
-
-        <div className="project-visual__metrics" aria-hidden="true">
-          {item.metrics.map((metric, index) => (
-            <span key={metric}>
-              <small>{String(index + 1).padStart(2, "0")}</small>
-              {metric}
-            </span>
-          ))}
-        </div>
-      </div>
+    <div
+      className={`project-visual project-visual--image project-visual--${slug} ${compact ? "project-visual--compact" : ""}`}
+    >
+      <Image
+        src={image.src}
+        alt={image.alt}
+        fill
+        sizes={compact ? "(max-width: 768px) 100vw, 55vw" : "(max-width: 768px) 100vw, 80vw"}
+        className="project-visual__image"
+      />
     </div>
   );
 }
