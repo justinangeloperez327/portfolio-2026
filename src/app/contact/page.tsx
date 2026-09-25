@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { EditorialAccent } from "@/components/typography";
-import { BrushDivider, InkWash, RedSeal } from "@/components/visual";
+import { BrushDivider, RedSeal } from "@/components/visual";
 import { contactConversationAreas, contactMethods } from "@/content";
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="sumi-page contact-page-v3">
-      <header className="sumi-page-hero contact-hero">
+      <header className="contact-hero">
         <Image
           src="/contact-hero.png"
           alt=""
@@ -24,9 +24,8 @@ export default function ContactPage() {
           className="contact-hero__background"
         />
         <div className="contact-hero__background-wash" aria-hidden="true" />
-        <InkWash className="sumi-page-hero__wash" size="lg" />
-        <div className="sumi-section-index"><span>Contact</span><span>Start here</span></div>
-        <div className="sumi-page-hero__grid contact-hero__grid">
+        <div className="contact-hero__meta"><span>Contact</span><span>Start here</span></div>
+        <div className="contact-hero__layout">
           <div className="contact-hero__copy">
             <h1 className="page-display">Let&apos;s build<br /><EditorialAccent>something.</EditorialAccent></h1>
             <p>
