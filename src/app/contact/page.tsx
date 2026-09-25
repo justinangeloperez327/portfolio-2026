@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { EditorialAccent } from "@/components/typography";
 import { BrushDivider, InkWash, RedSeal } from "@/components/visual";
 import { contactConversationAreas, contactMethods } from "@/content";
 
@@ -16,7 +17,7 @@ export default function ContactPage() {
         <InkWash className="sumi-page-hero__wash" size="lg" />
         <div className="sumi-section-index"><span>Contact</span><span>Start here</span></div>
         <div className="sumi-page-hero__grid">
-          <h1>Let&apos;s build<br /><em>something.</em></h1>
+          <h1 className="page-display">Let&apos;s build<br /><EditorialAccent>something.</EditorialAccent></h1>
           <div>
             <p>
               Have a project, collaboration, or technical problem worth discussing?
@@ -63,7 +64,7 @@ export default function ContactPage() {
         <div className="sumi-section-index sumi-section-index--light">
           <span>03</span><span>A useful first message</span>
         </div>
-        <h2>Context makes the conversation faster.</h2>
+        <h2 className="section-display section-display--light">Context makes the conversation faster.</h2>
         <p>
           Share the problem, current constraints, expected outcome, and technical
           context you already have. That is enough to start.
