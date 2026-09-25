@@ -6,5 +6,5 @@ type LedeProps = {
 };
 
 export function Lede({ children, className = "" }: LedeProps) {
-  return <p className={`lede ${className}`.trim()}>{children}</p>;
+  return <p className={`type-lede ${className}`.trim()}>{children}</p>;
 }
