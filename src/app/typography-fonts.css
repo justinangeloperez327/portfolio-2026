@@ -313,3 +313,175 @@ body,
     padding-bottom: 2rem;
   }
 }
+
+
+/* Dark cinematic hero treatment and mirrored artwork */
+.sumi-hero,
+.contact-hero {
+  color: var(--paper);
+  background: var(--dark);
+}
+
+.sumi-hero__background,
+.contact-hero__background {
+  transform: scaleX(-1);
+}
+
+.project-visual__image {
+  transform: scaleX(-1);
+}
+
+.sumi-hero__background-wash {
+  background:
+    linear-gradient(
+      270deg,
+      rgb(13 13 12 / 96%) 0%,
+      rgb(13 13 12 / 88%) 24%,
+      rgb(13 13 12 / 64%) 44%,
+      rgb(13 13 12 / 22%) 68%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(13 13 12 / 28%) 0%,
+      transparent 30%,
+      rgb(13 13 12 / 14%) 70%,
+      rgb(13 13 12 / 42%) 100%
+    );
+}
+
+.contact-hero__background-wash {
+  background:
+    linear-gradient(
+      270deg,
+      rgb(13 13 12 / 96%) 0%,
+      rgb(13 13 12 / 86%) 28%,
+      rgb(13 13 12 / 58%) 48%,
+      rgb(13 13 12 / 18%) 72%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(13 13 12 / 20%) 0%,
+      transparent 62%,
+      rgb(13 13 12 / 42%) 100%
+    );
+}
+
+.sumi-hero__grid {
+  grid-template-columns: minmax(18rem, 0.9fr) minmax(0, 1.1fr);
+}
+
+.sumi-hero__copy {
+  grid-column: 2;
+  justify-self: end;
+  width: min(100%, 48rem);
+  color: var(--paper);
+}
+
+.sumi-hero__art {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.sumi-hero__meta,
+.sumi-hero__foot,
+.sumi-hero .sumi-kicker {
+  color: rgb(247 245 239 / 72%);
+}
+
+.sumi-hero h1,
+.sumi-hero__lede,
+.sumi-hero .sumi-actions a {
+  color: var(--paper);
+}
+
+.sumi-hero__lede {
+  color: rgb(247 245 239 / 78%);
+}
+
+.sumi-hero .sumi-actions a {
+  border-color: rgb(247 245 239 / 45%);
+}
+
+.sumi-hero__art .red-seal {
+  right: auto;
+  left: clamp(0.5rem, 2vw, 2rem);
+}
+
+.contact-hero__grid {
+  grid-template-columns: minmax(18rem, 1.1fr) minmax(0, 0.9fr);
+}
+
+.contact-hero__copy {
+  grid-column: 2;
+  justify-self: end;
+  width: min(100%, 42rem);
+  color: var(--paper);
+}
+
+.contact-hero .sumi-section-index {
+  color: rgb(247 245 239 / 70%);
+}
+
+.contact-hero h1 {
+  color: var(--paper);
+}
+
+.contact-hero__copy > p {
+  color: rgb(247 245 239 / 76%);
+}
+
+.contact-hero .type-editorial-accent {
+  color: var(--paper);
+}
+
+@media (max-width: 72rem) {
+  .sumi-hero__background,
+  .contact-hero__background {
+    object-position: 38% center;
+  }
+
+  .sumi-hero__copy {
+    max-width: min(42rem, 70vw);
+  }
+}
+
+@media (max-width: 48rem) {
+  .sumi-hero__background,
+  .contact-hero__background {
+    object-position: 34% center;
+  }
+
+  .sumi-hero__background-wash,
+  .contact-hero__background-wash {
+    background:
+      linear-gradient(
+        180deg,
+        rgb(13 13 12 / 72%) 0%,
+        rgb(13 13 12 / 42%) 38%,
+        rgb(13 13 12 / 72%) 68%,
+        rgb(13 13 12 / 94%) 100%
+      );
+  }
+
+  .sumi-hero__grid,
+  .contact-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sumi-hero__copy,
+  .contact-hero__copy {
+    grid-column: 1;
+    justify-self: stretch;
+    max-width: 100%;
+  }
+
+  .sumi-hero__copy {
+    align-self: end;
+  }
+
+  .contact-hero__copy {
+    align-self: end;
+  }
+}
