@@ -106,7 +106,6 @@ body,
   letter-spacing: 0;
 }
 
-
 /* Uploaded portfolio artwork */
 .project-visual--image {
   position: relative;
@@ -115,47 +114,123 @@ body,
   background: var(--paper-deep);
 }
 
-.project-visual__image,
-.sumi-hero__image,
-.contact-hero__image {
+.project-visual__image {
   object-fit: cover;
 }
 
-.sumi-hero__image-frame,
-.contact-hero__image-frame {
+.sumi-hero,
+.contact-hero {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
-  width: 100%;
-  background: var(--paper-deep);
 }
 
-.sumi-hero__image-frame {
-  min-height: clamp(28rem, 58vw, 52rem);
-  aspect-ratio: 4 / 5;
+.sumi-hero {
+  min-height: 100svh;
 }
 
-.contact-hero__image-frame {
-  min-height: clamp(26rem, 52vw, 44rem);
-  aspect-ratio: 4 / 5;
+.sumi-hero__background,
+.contact-hero__background {
+  z-index: -3;
+  object-fit: cover;
+}
+
+.sumi-hero__background {
+  object-position: center center;
+}
+
+.contact-hero__background {
+  object-position: center center;
+}
+
+.sumi-hero__background-wash,
+.contact-hero__background-wash {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.sumi-hero__background-wash {
+  background:
+    linear-gradient(
+      90deg,
+      rgb(247 245 239 / 94%) 0%,
+      rgb(247 245 239 / 82%) 28%,
+      rgb(247 245 239 / 42%) 50%,
+      rgb(247 245 239 / 8%) 72%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(247 245 239 / 26%) 0%,
+      transparent 32%,
+      rgb(247 245 239 / 12%) 74%,
+      rgb(247 245 239 / 32%) 100%
+    );
+}
+
+.contact-hero__background-wash {
+  background:
+    linear-gradient(
+      90deg,
+      rgb(247 245 239 / 95%) 0%,
+      rgb(247 245 239 / 80%) 32%,
+      rgb(247 245 239 / 34%) 54%,
+      rgb(247 245 239 / 6%) 76%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(247 245 239 / 18%) 0%,
+      transparent 68%,
+      rgb(247 245 239 / 28%) 100%
+    );
+}
+
+.sumi-hero > *,
+.contact-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.sumi-hero__grid {
+  min-height: calc(100svh - 10rem);
+  align-items: center;
+}
+
+.sumi-hero__copy {
+  max-width: min(48rem, 64vw);
 }
 
 .sumi-hero__art {
-  position: relative;
+  min-height: clamp(8rem, 24vw, 20rem);
+  pointer-events: none;
 }
 
 .sumi-hero__art .red-seal {
   position: absolute;
-  right: clamp(0.75rem, 2vw, 1.5rem);
-  bottom: clamp(0.75rem, 2vw, 1.5rem);
-  z-index: 2;
+  right: clamp(0.5rem, 2vw, 2rem);
+  bottom: 0;
+}
+
+.contact-hero {
+  width: 100%;
+  max-width: none;
+  min-height: min(82svh, 56rem);
+  padding-inline:
+    max(var(--page), calc((100vw - var(--max)) / 2 + var(--page)));
 }
 
 .contact-hero__grid {
+  min-height: clamp(34rem, 66svh, 48rem);
+  grid-template-columns: minmax(0, 0.78fr) minmax(20rem, 1.22fr);
   align-items: center;
 }
 
 .contact-hero__copy {
   display: grid;
+  max-width: 42rem;
   align-content: center;
 }
 
@@ -171,16 +246,70 @@ body,
 }
 
 @media (max-width: 72rem) {
-  .sumi-hero__image-frame,
-  .contact-hero__image-frame {
-    min-height: 0;
-    aspect-ratio: 4 / 5;
+  .sumi-hero__background {
+    object-position: 62% center;
+  }
+
+  .contact-hero__background {
+    object-position: 60% center;
+  }
+
+  .sumi-hero__copy {
+    max-width: min(42rem, 72vw);
+  }
+
+  .contact-hero__grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(12rem, 1.1fr);
   }
 }
 
 @media (max-width: 48rem) {
-  .sumi-hero__image-frame,
-  .contact-hero__image-frame {
-    aspect-ratio: 4 / 5;
+  .sumi-hero {
+    min-height: 100svh;
+  }
+
+  .sumi-hero__background,
+  .contact-hero__background {
+    object-position: 66% center;
+  }
+
+  .sumi-hero__background-wash,
+  .contact-hero__background-wash {
+    background:
+      linear-gradient(
+        180deg,
+        rgb(247 245 239 / 92%) 0%,
+        rgb(247 245 239 / 78%) 38%,
+        rgb(247 245 239 / 32%) 66%,
+        rgb(247 245 239 / 18%) 100%
+      );
+  }
+
+  .sumi-hero__grid {
+    min-height: calc(100svh - 9rem);
+    align-items: end;
+  }
+
+  .sumi-hero__copy {
+    max-width: 100%;
+    padding-bottom: clamp(3rem, 10vh, 6rem);
+  }
+
+  .sumi-hero__art {
+    display: none;
+  }
+
+  .contact-hero {
+    min-height: 78svh;
+  }
+
+  .contact-hero__grid {
+    min-height: 64svh;
+    grid-template-columns: 1fr;
+    align-items: end;
+  }
+
+  .contact-hero__copy {
+    padding-bottom: 2rem;
   }
 }
