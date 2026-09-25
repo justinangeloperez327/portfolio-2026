@@ -637,3 +637,155 @@ body,
     padding: 2rem 1.25rem;
   }
 }
+
+
+/* Projects index landscape treatment */
+.projects-index {
+  gap: clamp(3rem, 7vw, 6rem);
+}
+
+.projects-index__item--landscape {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  min-height: clamp(30rem, 52vw, 46rem);
+  background: var(--dark);
+}
+
+.projects-index__item--landscape .projects-index__visual,
+.projects-index__item--landscape .project-visual {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.projects-index__item--landscape .project-visual {
+  aspect-ratio: auto;
+}
+
+.projects-index__item--landscape .project-visual__image {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.projects-index__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgb(13 13 12 / 95%) 0%,
+      rgb(13 13 12 / 86%) 24%,
+      rgb(13 13 12 / 58%) 44%,
+      rgb(13 13 12 / 18%) 68%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(13 13 12 / 10%) 0%,
+      transparent 56%,
+      rgb(13 13 12 / 38%) 100%
+    );
+}
+
+.projects-index__item--mirrored .projects-index__overlay {
+  background:
+    linear-gradient(
+      270deg,
+      rgb(13 13 12 / 95%) 0%,
+      rgb(13 13 12 / 86%) 24%,
+      rgb(13 13 12 / 58%) 44%,
+      rgb(13 13 12 / 18%) 68%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(13 13 12 / 10%) 0%,
+      transparent 56%,
+      rgb(13 13 12 / 38%) 100%
+    );
+}
+
+.projects-index__item--landscape .projects-index__copy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: min(44rem, 48%);
+  min-height: clamp(30rem, 52vw, 46rem);
+  align-content: center;
+  padding: clamp(2rem, 5vw, 5rem);
+  color: var(--paper);
+}
+
+.projects-index__item--mirrored .projects-index__copy {
+  margin-left: auto;
+}
+
+.projects-index__item--landscape .sumi-project__meta,
+.projects-index__item--landscape .sumi-project__stack,
+.projects-index__item--landscape .projects-index__copy > p {
+  color: rgb(247 245 239 / 72%);
+}
+
+.projects-index__item--landscape .project-name,
+.projects-index__item--landscape .project-name a,
+.projects-index__item--landscape .sumi-text-link {
+  color: var(--paper);
+}
+
+.projects-index__item--landscape .sumi-text-link {
+  border-color: rgb(247 245 239 / 42%);
+}
+
+.projects-index__item--landscape .projects-index__visual:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: -4px;
+}
+
+@media (max-width: 72rem) {
+  .projects-index__item--landscape .projects-index__copy {
+    width: min(40rem, 58%);
+  }
+}
+
+@media (max-width: 48rem) {
+  .projects-index {
+    gap: 2rem;
+  }
+
+  .projects-index__item--landscape {
+    min-height: 38rem;
+  }
+
+  .projects-index__item--landscape .project-visual__image {
+    object-position: 62% center;
+  }
+
+  .projects-index__item--mirrored .project-visual__image {
+    object-position: 38% center;
+  }
+
+  .projects-index__overlay,
+  .projects-index__item--mirrored .projects-index__overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgb(13 13 12 / 8%) 0%,
+        rgb(13 13 12 / 24%) 36%,
+        rgb(13 13 12 / 84%) 70%,
+        rgb(13 13 12 / 96%) 100%
+      );
+  }
+
+  .projects-index__item--landscape .projects-index__copy,
+  .projects-index__item--mirrored .projects-index__copy {
+    width: 100%;
+    min-height: 38rem;
+    margin-left: 0;
+    align-content: end;
+    padding: 2rem 1.25rem;
+  }
+}
