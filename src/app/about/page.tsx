@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EditorialAccent } from "@/components/typography";
 import { BrushDivider, InkWash, RedSeal } from "@/components/visual";
 import { siteConfig } from "@/config/site";
 import {
@@ -34,7 +35,7 @@ export default function AboutPage() {
           <span>{siteConfig.location}</span>
         </div>
         <div className="sumi-page-hero__grid">
-          <h1>I build software<br />from the <em>inside out.</em></h1>
+          <h1 className="page-display">I build software<br />from the <EditorialAccent>inside out.</EditorialAccent></h1>
           <div>
             <p>
               My work spans application development, framework design, language
@@ -48,7 +49,7 @@ export default function AboutPage() {
       <section className="about-v3-story">
         <div className="sumi-section-index"><span>01</span><span>Story</span></div>
         <div className="about-v3-story__grid">
-          <h2>Difficult systems should still be understandable.</h2>
+          <h2 className="section-display">Difficult systems should still be understandable.</h2>
           <div>
             <p>
               My background is rooted in web application development. Building
@@ -94,7 +95,7 @@ export default function AboutPage() {
       <section className="about-v3-process">
         <div className="sumi-section-index"><span>04</span><span>Process</span></div>
         <div className="about-v3-process__heading">
-          <h2>Less ceremony.<br />More <em>signal.</em></h2>
+          <h2 className="editorial-statement">Less ceremony.<br />More <EditorialAccent>signal.</EditorialAccent></h2>
           <p>A process matters when it improves the decisions made inside it.</p>
         </div>
         <ol>
