@@ -5416,8 +5416,8 @@ body {
 .site-brand__mark {
   position: relative;
   overflow: visible;
-  width: 4.5rem;
-  height: 3.25rem;
+  width: clamp(7rem, 9vw, 9rem);
+  height: 3.75rem;
   flex: 0 0 auto;
   border: 0 !important;
   border-radius: 0;
@@ -5431,7 +5431,7 @@ body {
 
 @media (max-width: 48rem) {
   .site-brand__mark {
-    width: 3.75rem;
-    height: 2.75rem;
+    width: 6rem;
+    height: 3.25rem;
   }
 }
