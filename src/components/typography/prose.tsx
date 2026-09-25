@@ -6,5 +6,5 @@ type ProseProps = {
 };
 
 export function Prose({ children, className = "" }: ProseProps) {
-  return <div className={`prose ${className}`.trim()}>{children}</div>;
+  return <div className={`type-prose ${className}`.trim()}>{children}</div>;
 }
