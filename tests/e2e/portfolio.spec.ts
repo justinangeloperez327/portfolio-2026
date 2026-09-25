@@ -4,21 +4,31 @@ test("homepage exposes identity and navigation", async ({ page }) => {
   await page.goto("/");
 
   await expect(
-    page.getByRole("heading", { name: "Justin Angelo Perez" }),
+    page.getByRole("heading", { name: "Justin Angelo Perez." }),
   ).toBeVisible();
   await expect(
     page.getByRole("navigation", { name: "Primary navigation" }),
   ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Home", exact: true }),
+  ).toHaveAttribute("aria-current", "page");
 });
 
-test("work index reaches a project case study", async ({ page }) => {
-  await page.goto("/work");
+test("projects index reaches a project case study", async ({ page }) => {
+  await page.goto("/projects");
 
-  await expect(page.getByRole("heading", { name: "Work" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: /Ideas turned into systems/i }),
+  ).toBeVisible();
   await page.getByRole("link", { name: /Berserk/ }).first().click();
 
-  await expect(page).toHaveURL(/\/work\/berserk$/);
+  await expect(page).toHaveURL(/\/projects\/berserk$/);
   await expect(page.getByText("Berserk").first()).toBeVisible();
+});
+
+test("legacy work route redirects to projects", async ({ page }) => {
+  await page.goto("/work");
+  await expect(page).toHaveURL(/\/projects$/);
 });
 
 test("skip link moves focus to main content", async ({ page }) => {
@@ -33,6 +43,6 @@ test("skip link moves focus to main content", async ({ page }) => {
 });
 
 test("unknown project returns 404", async ({ page }) => {
-  const response = await page.goto("/work/not-a-real-project");
+  const response = await page.goto("/projects/not-a-real-project");
   expect(response?.status()).toBe(404);
 });

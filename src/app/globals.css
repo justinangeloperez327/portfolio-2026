@@ -4768,3 +4768,121 @@ body {
     gap: 1rem;
   }
 }
+
+
+/* Final interaction and accessibility pass */
+.primary-navigation a[aria-current="page"]::after {
+  opacity: 0.8;
+  transform: scaleX(1) rotate(-0.5deg);
+}
+
+.mobile-navigation a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.sumi-text-link,
+.sumi-actions a,
+.sumi-contact__grid a,
+.projects-index__copy a,
+.contact-v3-methods > a {
+  transition:
+    opacity var(--duration-fast) linear,
+    transform var(--duration-fast) var(--ease);
+}
+
+.sumi-text-link:hover,
+.sumi-actions a:hover,
+.sumi-contact__grid a:hover,
+.projects-index__copy a:hover {
+  opacity: 0.64;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sumi-project__visual .project-visual,
+  .projects-index__visual .project-visual {
+    transition:
+      transform var(--duration-base) var(--ease-ink),
+      filter var(--duration-base) var(--ease);
+  }
+
+  .sumi-project__visual:hover .project-visual,
+  .sumi-project__visual:focus-visible .project-visual,
+  .projects-index__visual:hover .project-visual,
+  .projects-index__visual:focus-visible .project-visual {
+    transform: scale(1.012);
+    filter: contrast(1.025);
+  }
+
+  .sumi-hero__mark {
+    animation: sumi-mark-settle 1200ms var(--ease-ink) both;
+  }
+}
+
+@keyframes sumi-mark-settle {
+  from {
+    opacity: 0;
+    transform: rotate(-13deg) scaleX(0.55) scaleY(1.2);
+  }
+
+  to {
+    opacity: 0.13;
+    transform: rotate(-13deg) scale(1.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .paper-grain,
+  .ink-wash,
+  .sumi-hero__mark,
+  .project-visual__ink {
+    display: none;
+  }
+
+  .red-seal,
+  .project-visual,
+  .sumi-hero__figure {
+    border: 1px solid CanvasText;
+  }
+}
+
+@media (max-width: 34rem) {
+  :root {
+    --page: 1rem;
+  }
+
+  .sumi-hero__meta,
+  .sumi-hero__foot {
+    font-size: 0.6rem;
+  }
+
+  .sumi-hero h1,
+  .sumi-page-hero h1 {
+    overflow-wrap: anywhere;
+  }
+
+  .sumi-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .contact-v3-methods strong {
+    overflow-wrap: anywhere;
+  }
+}
