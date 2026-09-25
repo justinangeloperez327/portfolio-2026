@@ -30,7 +30,8 @@ export function ProjectVisual({
   compact = false,
   mirrored = false,
 }: ProjectVisualProps) {
-  const image = projectImages[slug as keyof typeof projectImages] ?? projectImages.berserk;
+  const image =
+    projectImages[slug as keyof typeof projectImages] ?? projectImages.berserk;
 
   return (
     <div
@@ -40,7 +41,11 @@ export function ProjectVisual({
         src={image.src}
         alt={image.alt}
         fill
-        sizes={compact ? "(max-width: 768px) 100vw, 55vw" : "(max-width: 768px) 100vw, 100vw"}
+        sizes={
+          compact
+            ? "(max-width: 768px) 100vw, 55vw"
+            : "(max-width: 768px) 100vw, 1200px"
+        }
         className="project-visual__image"
       />
     </div>

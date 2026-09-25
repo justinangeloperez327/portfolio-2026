@@ -22,7 +22,11 @@ export default function ProjectsPage() {
           <span>2026</span>
         </div>
         <div className="sumi-page-hero__grid">
-          <h1 className="page-display">Ideas turned<br />into <EditorialAccent>systems.</EditorialAccent></h1>
+          <h1 className="page-display">
+            Ideas turned
+            <br />
+            into <EditorialAccent>systems.</EditorialAccent>
+          </h1>
           <p>
             Frameworks, language experiments, frontend tooling, and product work
             focused on architecture and developer experience.
@@ -39,13 +43,9 @@ export default function ProjectsPage() {
               className={`projects-index__item projects-index__item--landscape ${mirrored ? "projects-index__item--mirrored" : ""}`}
               key={project.slug}
             >
-              <Link
-                href={`/projects/${project.slug}`}
-                className="projects-index__visual"
-                aria-label={`View ${project.name} project`}
-              >
+              <div className="projects-index__media" aria-hidden="true">
                 <ProjectVisual slug={project.slug} mirrored={mirrored} />
-              </Link>
+              </div>
 
               <div className="projects-index__overlay" aria-hidden="true" />
 
@@ -55,14 +55,24 @@ export default function ProjectsPage() {
                   <span>{project.category}</span>
                   <span>{project.status}</span>
                 </div>
+
                 <h2 className="project-name">
                   <Link href={`/projects/${project.slug}`}>{project.name}</Link>
                 </h2>
+
                 <p>{project.summary}</p>
+
                 <div className="sumi-project__stack">
-                  {project.technologies.map((item) => <span key={item}>{item}</span>)}
+                  {project.technologies.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
                 </div>
-                <Link className="sumi-text-link" href={`/projects/${project.slug}`}>
+
+                <Link
+                  className="sumi-text-link"
+                  href={`/projects/${project.slug}`}
+                  aria-label={`View ${project.name} project`}
+                >
                   View project ↗
                 </Link>
               </div>
@@ -71,7 +81,9 @@ export default function ProjectsPage() {
         })}
       </section>
 
-      <div className="projects-page__end"><BrushDivider /></div>
+      <div className="projects-page__end">
+        <BrushDivider />
+      </div>
     </main>
   );
 }
