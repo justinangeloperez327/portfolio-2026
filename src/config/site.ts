@@ -28,9 +28,13 @@ export const siteConfig = {
     "http://localhost:3000",
   locale: "en_AE",
   navigation: [
-    { label: "Work", href: "/work" },
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" },
     { label: "About", href: "/about" },
-    { label: "Resume", href: "/resume" },
     { label: "Contact", href: "/contact" },
   ],
+  social: {
+    github: "https://github.com/justinangeloperez327",
+    email: "mailto:justinangeloperez327@gmail.com",
+  },
 } as const;

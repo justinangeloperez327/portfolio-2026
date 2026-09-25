@@ -7,9 +7,16 @@ export function PrimaryNavigation() {
       <ul>
         {siteConfig.navigation.map((item) => (
           <li key={item.href}>
-            <Link href={item.href}>{item.label}</Link>
+            <Link href={item.href}>
+              <span>{item.label}</span>
+            </Link>
           </li>
         ))}
+        <li className="primary-navigation__external">
+          <a href={siteConfig.social.github} target="_blank" rel="noreferrer">
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+        </li>
       </ul>
     </nav>
   );

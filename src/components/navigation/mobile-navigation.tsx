@@ -4,7 +4,10 @@ import { siteConfig } from "@/config/site";
 export function MobileNavigation() {
   return (
     <details className="mobile-navigation">
-      <summary>Menu</summary>
+      <summary aria-label="Open navigation">
+        <span>Menu</span>
+        <span aria-hidden="true">＋</span>
+      </summary>
       <nav aria-label="Mobile navigation">
         <ul>
           {siteConfig.navigation.map((item, index) => (
@@ -13,6 +16,12 @@ export function MobileNavigation() {
               <Link href={item.href}>{item.label}</Link>
             </li>
           ))}
+          <li>
+            <span aria-hidden="true">05</span>
+            <a href={siteConfig.social.github} target="_blank" rel="noreferrer">
+              GitHub ↗
+            </a>
+          </li>
         </ul>
       </nav>
     </details>

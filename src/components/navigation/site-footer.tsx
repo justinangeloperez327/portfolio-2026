@@ -1,14 +1,38 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { BrushDivider, RedSeal } from "@/components/visual";
 
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="footer-title">JUSTIN<br />ANGELO<br />PEREZ</div>
+      <BrushDivider className="site-footer__brush" />
+      <div className="site-footer__top">
+        <div>
+          <span className="site-footer__eyebrow">Software Developer · Portfolio 2026</span>
+          <p className="footer-title">Justin Angelo<br />Perez.</p>
+        </div>
+        <RedSeal />
+      </div>
+
       <div className="site-footer__inner">
-        <div><span>Software Developer</span><span>{siteConfig.location}</span></div>
-        <nav aria-label="Footer navigation"><ul>{siteConfig.navigation.map((item) => <li key={item.href}><Link href={item.href}>{item.label}</Link></li>)}</ul></nav>
-        <div className="footer-meta"><a href="https://github.com/justinangeloperez327" target="_blank" rel="noreferrer">GitHub ↗</a><span>© 2026</span></div>
+        <div className="site-footer__identity">
+          <span>{siteConfig.title}</span>
+          <span>{siteConfig.location}</span>
+        </div>
+
+        <nav aria-label="Footer navigation">
+          <ul>
+            {siteConfig.navigation.map((item) => (
+              <li key={item.href}><Link href={item.href}>{item.label}</Link></li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="footer-meta">
+          <a href={siteConfig.social.github} target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href={siteConfig.social.email}>Email ↗</a>
+          <span>© 2026</span>
+        </div>
       </div>
     </footer>
   );
