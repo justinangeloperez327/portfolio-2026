@@ -5410,28 +5410,23 @@ body {
 
 /* Portfolio logo mark */
 .site-brand {
+  display: inline-flex;
+  min-height: 0;
+  align-items: center;
   gap: 0;
-}
-
-.site-brand__mark {
-  position: relative;
-  overflow: visible;
-  width: clamp(7rem, 9vw, 9rem);
-  height: 3.75rem;
-  flex: 0 0 auto;
-  border: 0 !important;
-  border-radius: 0;
-  background: transparent;
+  line-height: 0;
 }
 
 .site-brand__logo {
-  object-fit: contain;
-  object-position: left center;
+  display: block;
+  width: clamp(10rem, 14vw, 14rem);
+  max-width: none;
+  height: auto;
+  flex: 0 0 auto;
 }
 
 @media (max-width: 48rem) {
-  .site-brand__mark {
-    width: 6rem;
-    height: 3.25rem;
+  .site-brand__logo {
+    width: clamp(7.5rem, 28vw, 9rem);
   }
 }
