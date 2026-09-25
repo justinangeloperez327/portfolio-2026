@@ -789,3 +789,164 @@ body,
     padding: 2rem 1.25rem;
   }
 }
+
+
+/* Homepage project list v2: isolated from legacy .sumi-project grid rules */
+.sumi-projects__list {
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.home-project-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  background: var(--dark);
+}
+
+.home-project-card__visual,
+.home-project-card__visual .project-visual {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.home-project-card__visual .project-visual {
+  min-height: 0;
+  aspect-ratio: auto;
+  border: 0;
+}
+
+.home-project-card__visual .project-visual__image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.home-project-card__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgb(13 13 12 / 96%) 0%,
+      rgb(13 13 12 / 88%) 25%,
+      rgb(13 13 12 / 60%) 44%,
+      rgb(13 13 12 / 18%) 66%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(13 13 12 / 10%) 0%,
+      transparent 58%,
+      rgb(13 13 12 / 38%) 100%
+    );
+}
+
+.home-project-card--mirrored .home-project-card__overlay {
+  background:
+    linear-gradient(
+      270deg,
+      rgb(13 13 12 / 96%) 0%,
+      rgb(13 13 12 / 88%) 25%,
+      rgb(13 13 12 / 60%) 44%,
+      rgb(13 13 12 / 18%) 66%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(13 13 12 / 10%) 0%,
+      transparent 58%,
+      rgb(13 13 12 / 38%) 100%
+    );
+}
+
+.home-project-card__copy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: min(42rem, 48%);
+  height: 100%;
+  align-content: center;
+  padding: clamp(2rem, 5vw, 5rem);
+  color: var(--paper);
+}
+
+.home-project-card--mirrored .home-project-card__copy {
+  margin-left: auto;
+}
+
+.home-project-card__copy .sumi-project__meta,
+.home-project-card__copy .sumi-project__stack,
+.home-project-card__copy > p {
+  color: rgb(247 245 239 / 72%);
+}
+
+.home-project-card__copy .project-name,
+.home-project-card__copy .project-name a,
+.home-project-card__copy .sumi-text-link {
+  color: var(--paper);
+}
+
+.home-project-card__copy .project-name {
+  margin: 1rem 0 1.25rem;
+}
+
+.home-project-card__copy .sumi-text-link {
+  border-color: rgb(247 245 239 / 42%);
+}
+
+.home-project-card__visual:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: -4px;
+}
+
+@media (max-width: 72rem) {
+  .home-project-card {
+    aspect-ratio: 3 / 2;
+  }
+
+  .home-project-card__copy {
+    width: min(38rem, 58%);
+  }
+}
+
+@media (max-width: 48rem) {
+  .home-project-card {
+    aspect-ratio: 4 / 5;
+  }
+
+  .home-project-card__visual .project-visual__image {
+    object-position: 66% center;
+  }
+
+  .home-project-card--mirrored .home-project-card__visual .project-visual__image {
+    object-position: 34% center;
+  }
+
+  .home-project-card__overlay,
+  .home-project-card--mirrored .home-project-card__overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgb(13 13 12 / 8%) 0%,
+        rgb(13 13 12 / 22%) 38%,
+        rgb(13 13 12 / 82%) 68%,
+        rgb(13 13 12 / 97%) 100%
+      );
+  }
+
+  .home-project-card__copy,
+  .home-project-card--mirrored .home-project-card__copy {
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    align-content: end;
+    padding: 1.5rem 1.25rem 2rem;
+  }
+}
