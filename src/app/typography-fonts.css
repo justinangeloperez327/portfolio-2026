@@ -105,3 +105,82 @@ body,
   font-weight: 400;
   letter-spacing: 0;
 }
+
+
+/* Uploaded portfolio artwork */
+.project-visual--image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--paper-deep);
+}
+
+.project-visual__image,
+.sumi-hero__image,
+.contact-hero__image {
+  object-fit: cover;
+}
+
+.sumi-hero__image-frame,
+.contact-hero__image-frame {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: var(--paper-deep);
+}
+
+.sumi-hero__image-frame {
+  min-height: clamp(28rem, 58vw, 52rem);
+  aspect-ratio: 4 / 5;
+}
+
+.contact-hero__image-frame {
+  min-height: clamp(26rem, 52vw, 44rem);
+  aspect-ratio: 4 / 5;
+}
+
+.sumi-hero__art {
+  position: relative;
+}
+
+.sumi-hero__art .red-seal {
+  position: absolute;
+  right: clamp(0.75rem, 2vw, 1.5rem);
+  bottom: clamp(0.75rem, 2vw, 1.5rem);
+  z-index: 2;
+}
+
+.contact-hero__grid {
+  align-items: center;
+}
+
+.contact-hero__copy {
+  display: grid;
+  align-content: center;
+}
+
+.contact-hero__copy > p {
+  max-width: 34rem;
+  margin-top: 2rem;
+  color: var(--ink-60);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+}
+
+.contact-hero__copy .red-seal {
+  margin-top: 2rem;
+}
+
+@media (max-width: 72rem) {
+  .sumi-hero__image-frame,
+  .contact-hero__image-frame {
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+}
+
+@media (max-width: 48rem) {
+  .sumi-hero__image-frame,
+  .contact-hero__image-frame {
+    aspect-ratio: 4 / 5;
+  }
+}
