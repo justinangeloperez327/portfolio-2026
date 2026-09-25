@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrushDivider } from "@/components/visual";
 import { projects } from "@/data/projects";
 import type { CaseStudy } from "@/types/case-study";
 import { CaseStudyHeader } from "./case-study-header";
@@ -17,11 +18,16 @@ export function CaseStudyLayout({ study }: CaseStudyLayoutProps) {
       <div className="case-layout">
         <aside><CaseStudyNav sections={study.sections} /></aside>
         <div className="case-sections">
-          {study.sections.map((section, index) => <CaseStudySection key={section.key} index={index} section={section} />)}
+          {study.sections.map((section, index) => (
+            <CaseStudySection key={section.key} index={index} section={section} />
+          ))}
         </div>
       </div>
+
+      <div className="case-study__divider"><BrushDivider /></div>
+
       {nextProject ? (
-        <Link className="next-project" href={`/work/${nextProject.slug}`}>
+        <Link className="next-project" href={`/projects/${nextProject.slug}`}>
           <span>Next project</span><strong>{nextProject.name}</strong><span>↗</span>
         </Link>
       ) : null}

@@ -4380,3 +4380,391 @@ body {
     gap: 1rem;
   }
 }
+
+
+/* Sumi-e subpages v3 */
+.sumi-page {
+  overflow: clip;
+}
+
+.sumi-page-hero {
+  position: relative;
+  width: min(100%, var(--max));
+  margin-inline: auto;
+  padding: clamp(9rem, 16vw, 13rem) var(--page) clamp(6rem, 10vw, 10rem);
+}
+
+.sumi-page-hero__wash {
+  z-index: -1;
+  top: 15%;
+  right: -10%;
+  opacity: 0.42;
+}
+
+.sumi-page-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+  gap: clamp(3rem, 8vw, 9rem);
+  align-items: end;
+  padding-top: clamp(4rem, 8vw, 7rem);
+}
+
+.sumi-page-hero h1 {
+  margin: 0;
+  font-size: clamp(4.5rem, 10vw, 10rem);
+  font-weight: 540;
+  line-height: 0.84;
+  letter-spacing: -0.075em;
+}
+
+.sumi-page-hero h1 em,
+.about-v3-process__heading em {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.sumi-page-hero__grid p {
+  max-width: 34rem;
+  color: var(--ink-60);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+}
+
+.sumi-page-hero__grid .red-seal {
+  margin-top: 2rem;
+}
+
+.projects-index,
+.about-v3-story,
+.about-v3-focus,
+.about-v3-process,
+.about-v3-stack,
+.contact-v3-methods,
+.contact-v3-reasons {
+  width: min(100%, var(--max));
+  margin-inline: auto;
+  padding: 0 var(--page) var(--section);
+}
+
+.projects-index {
+  display: grid;
+  gap: clamp(7rem, 13vw, 12rem);
+}
+
+.projects-index__item {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.7fr);
+  gap: clamp(3rem, 7vw, 8rem);
+  align-items: center;
+}
+
+.projects-index__item:nth-child(even) {
+  grid-template-columns: minmax(18rem, 0.7fr) minmax(0, 1.1fr);
+}
+
+.projects-index__item:nth-child(even) .projects-index__visual {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.projects-index__item:nth-child(even) .projects-index__copy {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.projects-index__copy h2 {
+  margin: 1rem 0 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.projects-index__copy > p {
+  max-width: 35rem;
+  color: var(--ink-60);
+}
+
+.projects-page__end {
+  width: min(100%, var(--max));
+  margin-inline: auto;
+  padding: 0 var(--page) var(--section);
+}
+
+.about-v3-story__grid,
+.about-v3-process__heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.7fr);
+  gap: clamp(3rem, 8vw, 9rem);
+  padding-top: clamp(4rem, 8vw, 7rem);
+}
+
+.about-v3-story h2,
+.about-v3-process h2,
+.contact-v3-guidance h2 {
+  margin: 0;
+  font-size: clamp(3.3rem, 7vw, 6.5rem);
+  font-weight: 520;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.about-v3-story__grid p,
+.about-v3-process__heading p {
+  color: var(--ink-60);
+}
+
+.about-v3-focus__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(4rem, 8vw, 7rem);
+  border-top: 1px solid var(--ink-15);
+}
+
+.about-v3-focus article {
+  min-height: 18rem;
+  padding: 2rem;
+  border-right: 1px solid var(--ink-15);
+  border-bottom: 1px solid var(--ink-15);
+}
+
+.about-v3-focus article:nth-child(even) {
+  border-right: 0;
+}
+
+.about-v3-focus article > span,
+.about-v3-focus article p {
+  color: var(--ink-60);
+}
+
+.about-v3-focus h3 {
+  margin: clamp(3rem, 6vw, 6rem) 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+}
+
+.about-v3-principles {
+  padding: var(--section) max(var(--page), calc((100vw - var(--max)) / 2 + var(--page)));
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.about-v3-principles__list {
+  margin-top: clamp(4rem, 8vw, 7rem);
+}
+
+.about-v3-principles article,
+.about-v3-process li {
+  display: grid;
+  grid-template-columns: 4rem minmax(15rem, 0.7fr) minmax(0, 1fr);
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid;
+}
+
+.about-v3-principles article {
+  border-color: rgb(247 245 239 / 18%);
+}
+
+.about-v3-principles article > span,
+.about-v3-principles p {
+  color: rgb(247 245 239 / 55%);
+}
+
+.about-v3-principles h3,
+.about-v3-principles p,
+.about-v3-process p {
+  margin: 0;
+}
+
+.about-v3-principles h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+}
+
+.about-v3-process ol {
+  margin: clamp(4rem, 8vw, 7rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-v3-process li {
+  border-color: var(--ink-15);
+}
+
+.about-v3-process li > span,
+.about-v3-process li p {
+  color: var(--ink-60);
+}
+
+.about-v3-stack .brush-divider {
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.about-v3-stack__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: clamp(4rem, 8vw, 7rem) 0 3rem;
+  border-top: 1px solid var(--ink-15);
+  border-left: 1px solid var(--ink-15);
+}
+
+.about-v3-stack__list span {
+  padding: 1rem 1.25rem;
+  border-right: 1px solid var(--ink-15);
+  border-bottom: 1px solid var(--ink-15);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.contact-v3-methods {
+  display: grid;
+}
+
+.contact-v3-methods > a {
+  display: grid;
+  grid-template-columns: 4rem 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  padding: 2rem 0;
+  border-top: 1px solid var(--ink-15);
+}
+
+.contact-v3-methods > a:last-child {
+  border-bottom: 1px solid var(--ink-15);
+}
+
+.contact-v3-methods small,
+.contact-v3-methods p,
+.contact-v3-methods > a > span:first-child {
+  color: var(--ink-60);
+}
+
+.contact-v3-methods strong {
+  display: block;
+  margin: 0.35rem 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: 400;
+}
+
+.contact-v3-methods p {
+  margin: 0;
+}
+
+.contact-v3-reasons > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(4rem, 8vw, 7rem);
+}
+
+.contact-v3-reasons article {
+  display: grid;
+  min-height: 10rem;
+  align-content: space-between;
+  padding: 1.5rem;
+  border-top: 1px solid var(--ink-15);
+  border-right: 1px solid var(--ink-15);
+  border-bottom: 1px solid var(--ink-15);
+}
+
+.contact-v3-reasons article:nth-child(even) {
+  border-right: 0;
+}
+
+.contact-v3-reasons article span {
+  color: var(--ink-60);
+  font-size: 0.7rem;
+}
+
+.contact-v3-reasons article strong {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+}
+
+.contact-v3-guidance {
+  padding: var(--section) max(var(--page), calc((100vw - var(--max)) / 2 + var(--page)));
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.contact-v3-guidance .brush-divider {
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+  color: var(--paper);
+}
+
+.contact-v3-guidance h2 {
+  max-width: 12ch;
+  margin-top: clamp(4rem, 8vw, 7rem);
+}
+
+.contact-v3-guidance p {
+  max-width: 40rem;
+  color: rgb(247 245 239 / 62%);
+  font-size: 1.05rem;
+}
+
+.contact-v3-guidance > a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  margin-top: 2rem;
+  border-bottom: 1px solid currentColor;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-study__divider {
+  width: min(100%, var(--max));
+  margin-inline: auto;
+  padding: 0 var(--page) clamp(4rem, 8vw, 7rem);
+}
+
+@media (max-width: 72rem) {
+  .sumi-page-hero__grid,
+  .projects-index__item,
+  .projects-index__item:nth-child(even),
+  .about-v3-story__grid,
+  .about-v3-process__heading {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-index__item:nth-child(even) .projects-index__visual,
+  .projects-index__item:nth-child(even) .projects-index__copy {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .about-v3-principles article,
+  .about-v3-process li {
+    grid-template-columns: 3rem 1fr;
+  }
+
+  .about-v3-principles p,
+  .about-v3-process li p {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 48rem) {
+  .about-v3-focus__grid,
+  .contact-v3-reasons > div {
+    grid-template-columns: 1fr;
+  }
+
+  .about-v3-focus article,
+  .contact-v3-reasons article {
+    border-right: 0;
+  }
+
+  .contact-v3-methods > a {
+    grid-template-columns: 2rem 1fr auto;
+    gap: 1rem;
+  }
+}
