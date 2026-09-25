@@ -31,28 +31,44 @@ export default function ProjectsPage() {
       </header>
 
       <section className="projects-index" aria-label="Project index">
-        {projects.map((project, index) => (
-          <article className="projects-index__item" key={project.slug}>
-            <Link href={`/projects/${project.slug}`} className="projects-index__visual">
-              <ProjectVisual slug={project.slug} compact />
-            </Link>
-            <div className="projects-index__copy">
-              <div className="sumi-project__meta">
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <span>{project.category}</span>
-                <span>{project.status}</span>
-              </div>
-              <h2 className="project-name"><Link href={`/projects/${project.slug}`}>{project.name}</Link></h2>
-              <p>{project.summary}</p>
-              <div className="sumi-project__stack">
-                {project.technologies.map((item) => <span key={item}>{item}</span>)}
-              </div>
-              <Link className="sumi-text-link" href={`/projects/${project.slug}`}>
-                View project ↗
+        {projects.map((project, index) => {
+          const mirrored = (index + 1) % 2 === 0;
+
+          return (
+            <article
+              className={`projects-index__item projects-index__item--landscape ${mirrored ? "projects-index__item--mirrored" : ""}`}
+              key={project.slug}
+            >
+              <Link
+                href={`/projects/${project.slug}`}
+                className="projects-index__visual"
+                aria-label={`View ${project.name} project`}
+              >
+                <ProjectVisual slug={project.slug} mirrored={mirrored} />
               </Link>
-            </div>
-          </article>
-        ))}
+
+              <div className="projects-index__overlay" aria-hidden="true" />
+
+              <div className="projects-index__copy">
+                <div className="sumi-project__meta">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <span>{project.category}</span>
+                  <span>{project.status}</span>
+                </div>
+                <h2 className="project-name">
+                  <Link href={`/projects/${project.slug}`}>{project.name}</Link>
+                </h2>
+                <p>{project.summary}</p>
+                <div className="sumi-project__stack">
+                  {project.technologies.map((item) => <span key={item}>{item}</span>)}
+                </div>
+                <Link className="sumi-text-link" href={`/projects/${project.slug}`}>
+                  View project ↗
+                </Link>
+              </div>
+            </article>
+          );
+        })}
       </section>
 
       <div className="projects-page__end"><BrushDivider /></div>
