@@ -1,22 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Instrument_Serif } from "next/font/google";
+import { Inter, Shippori_Mincho, Yuji_Syuku } from "next/font/google";
 import { SiteFooter, SiteHeader } from "@/components/navigation";
 import { MobileNavigation } from "@/components/navigation/mobile-navigation";
 import { SkipLink } from "@/components/ui";
 import { PaperGrain } from "@/components/visual/paper-grain";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
+import "./typography-fonts.css";
 
-const geist = Geist({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-geist",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
+const shipporiMincho = Shippori_Mincho({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-shippori",
+  display: "swap",
+});
+
+const yujiSyuku = Yuji_Syuku({
   subsets: ["latin"],
   weight: "400",
-  variable: "--font-editorial",
+  variable: "--font-yuji",
   display: "swap",
 });
 
@@ -68,7 +76,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geist.variable} ${instrumentSerif.variable}`}>
+      <body className={`${inter.variable} ${shipporiMincho.variable} ${yujiSyuku.variable}`}>
         <PaperGrain />
         <SkipLink />
         <SiteHeader />
