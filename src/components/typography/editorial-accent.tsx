@@ -10,6 +10,8 @@ export function EditorialAccent({
   className = "",
 }: EditorialAccentProps) {
   return (
-    <span className={`editorial-accent ${className}`.trim()}>{children}</span>
+    <span className={`type-editorial-accent ${className}`.trim()}>
+      {children}
+    </span>
   );
 }
