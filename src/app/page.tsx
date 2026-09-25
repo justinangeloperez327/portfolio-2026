@@ -52,6 +52,15 @@ export default function HomePage() {
       />
 
       <section className="sumi-hero" aria-labelledby="home-title">
+        <Image
+          src="/home-hero.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="sumi-hero__background"
+        />
+        <div className="sumi-hero__background-wash" aria-hidden="true" />
         <InkWash className="sumi-hero__wash sumi-hero__wash--one" size="lg" />
         <InkWash className="sumi-hero__wash sumi-hero__wash--two" size="md" />
 
@@ -79,17 +88,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="sumi-hero__art">
-            <div className="sumi-hero__image-frame">
-              <Image
-                src="/home-hero.png"
-                alt="Sumi-e inspired developer hero artwork"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 48vw"
-                className="sumi-hero__image"
-              />
-            </div>
+          <div className="sumi-hero__art" aria-hidden="true">
             <RedSeal />
           </div>
         </div>
