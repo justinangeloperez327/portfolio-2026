@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ProjectVisual } from "@/components/project/project-visual";
 import { EditorialAccent } from "@/components/typography";
-import { BrushDivider, InkMark, InkReveal, InkWash, RedSeal } from "@/components/visual";
+import { BrushDivider, InkReveal, InkWash, RedSeal } from "@/components/visual";
 import { siteConfig } from "@/config/site";
 import { projects } from "@/data/projects";
 
@@ -78,12 +79,16 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="sumi-hero__art" aria-hidden="true">
-            <InkMark className="sumi-hero__mark" />
-            <div className="sumi-hero__figure">
-              <span>Software</span>
-              <strong>01</strong>
-              <span>Systems</span>
+          <div className="sumi-hero__art">
+            <div className="sumi-hero__image-frame">
+              <Image
+                src="/home-hero.png"
+                alt="Sumi-e inspired developer hero artwork"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 48vw"
+                className="sumi-hero__image"
+              />
             </div>
             <RedSeal />
           </div>
