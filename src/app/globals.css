@@ -5408,11 +5408,16 @@ body {
   }
 }
 
-
 /* Portfolio logo mark */
+.site-brand {
+  gap: 0;
+}
+
 .site-brand__mark {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  width: 4.5rem;
+  height: 3.25rem;
   flex: 0 0 auto;
   border: 0 !important;
   border-radius: 0;
@@ -5421,5 +5426,12 @@ body {
 
 .site-brand__logo {
   object-fit: contain;
-  object-position: center;
+  object-position: left center;
+}
+
+@media (max-width: 48rem) {
+  .site-brand__mark {
+    width: 3.75rem;
+    height: 2.75rem;
+  }
 }

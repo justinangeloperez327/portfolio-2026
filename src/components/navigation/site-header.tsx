@@ -12,11 +12,10 @@ export function SiteHeader() {
               src="/logo.png"
               alt=""
               fill
-              sizes="48px"
+              sizes="80px"
               className="site-brand__logo"
             />
           </span>
-          <span className="site-brand__name">Justin Angelo Perez</span>
         </Link>
         <PrimaryNavigation />
       </div>
