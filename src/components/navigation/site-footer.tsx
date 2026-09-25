@@ -9,7 +9,7 @@ export function SiteFooter() {
       <div className="site-footer__top">
         <div>
           <span className="site-footer__eyebrow">Software Developer · Portfolio 2026</span>
-          <p className="footer-title">Justin Angelo<br />Perez.</p>
+          <p className="footer-title"><span>Justin</span><span>Angelo Perez</span></p>
         </div>
         <RedSeal />
       </div>
