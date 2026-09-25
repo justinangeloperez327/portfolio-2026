@@ -1377,3 +1377,56 @@ body,
     transition: none;
   }
 }
+
+
+/* Layer composition tuning: preserve full scene while reducing foreground scale */
+.sumi-hero--layered .sumi-hero__layer--background .sumi-hero__layer-image {
+  scale: 1;
+  transform-origin: center center;
+}
+
+.sumi-hero--layered .sumi-hero__layer--mid .sumi-hero__layer-image {
+  scale: 0.93;
+  transform-origin: 62% 52%;
+}
+
+.sumi-hero--layered .sumi-hero__layer--character .sumi-hero__layer-image {
+  scale: 0.82;
+  transform-origin: 68% 54%;
+}
+
+.sumi-hero--layered .sumi-hero__layer--foreground .sumi-hero__layer-image {
+  scale: 0.9;
+  transform-origin: 62% 56%;
+}
+
+@media (max-width: 72rem) {
+  .sumi-hero--layered .sumi-hero__layer--mid .sumi-hero__layer-image {
+    scale: 0.91;
+  }
+
+  .sumi-hero--layered .sumi-hero__layer--character .sumi-hero__layer-image {
+    scale: 0.78;
+  }
+
+  .sumi-hero--layered .sumi-hero__layer--foreground .sumi-hero__layer-image {
+    scale: 0.88;
+  }
+}
+
+@media (max-width: 48rem) {
+  .sumi-hero--layered .sumi-hero__layer--mid .sumi-hero__layer-image {
+    scale: 0.94;
+    transform-origin: 70% 54%;
+  }
+
+  .sumi-hero--layered .sumi-hero__layer--character .sumi-hero__layer-image {
+    scale: 0.84;
+    transform-origin: 72% 56%;
+  }
+
+  .sumi-hero--layered .sumi-hero__layer--foreground .sumi-hero__layer-image {
+    scale: 0.92;
+    transform-origin: 68% 58%;
+  }
+}

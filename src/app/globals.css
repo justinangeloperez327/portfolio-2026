@@ -5407,3 +5407,19 @@ body {
     transform: scaleX(-1);
   }
 }
+
+
+/* Portfolio logo mark */
+.site-brand__mark {
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 auto;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent;
+}
+
+.site-brand__logo {
+  object-fit: contain;
+  object-position: center;
+}

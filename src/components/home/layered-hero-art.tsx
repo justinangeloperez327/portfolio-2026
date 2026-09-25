@@ -101,7 +101,7 @@ export function LayeredHeroArt() {
     <div className="sumi-hero__layers" ref={sceneRef} aria-hidden="true">
       <div className="sumi-hero__layer sumi-hero__layer--background">
         <Image
-          src="/home-hero-bg.png"
+          src="/home-hero-bg.jpg"
           alt=""
           fill
           priority
