@@ -8,11 +8,41 @@
   --line: rgb(16 16 16 / 18%);
   --dark: #0d0d0d;
   --dark-muted: #b8b7b1;
-  --accent: #d64b2a;
+  --paper: #f7f5ef;
+  --paper-deep: #efede5;
+  --canvas: var(--paper);
+  --surface: #fbfaf6;
+  --ink: #11110f;
+  --ink-80: #34332f;
+  --ink-60: #66635c;
+  --ink-30: #aaa69c;
+  --ink-15: rgb(17 17 15 / 15%);
+  --ink-08: rgb(17 17 15 / 8%);
+  --muted: var(--ink-60);
+  --line: var(--ink-15);
+  --dark: #0d0d0c;
+  --dark-muted: #b8b5ac;
+  --accent: #b83b2e;
+  --vermilion: var(--accent);
+  --font-sans: var(--font-geist), Arial, Helvetica, sans-serif;
+  --font-display: var(--font-editorial), Georgia, "Times New Roman", serif;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
   --page: clamp(1.25rem, 4.5vw, 5rem);
   --section: clamp(6rem, 12vw, 12rem);
   --max: 96rem;
+  --prose: 62ch;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-ink: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-base: 420ms;
+  --duration-slow: 900ms;
 }
 
 *,
@@ -31,7 +61,7 @@ body {
   min-width: 20rem;
   background: var(--canvas);
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.55;
   text-rendering: optimizeLegibility;
@@ -207,7 +237,7 @@ p {
 .section-display em,
 .principles-section em,
 .editorial-contact em {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-display);
   font-weight: 400;
 }
 
@@ -3517,4 +3547,50 @@ body {
 @keyframes signal-in {
   from { transform: scaleY(.05); opacity: .2; }
   to { transform: scaleY(1); opacity: 1; }
+}
+
+
+/* Sumi-e material surface */
+.paper-grain {
+  position: fixed;
+  z-index: 9998;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.032;
+  mix-blend-mode: multiply;
+}
+
+.paper-grain::before,
+.paper-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.paper-grain::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.68'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.paper-grain::after {
+  background:
+    repeating-linear-gradient(
+      8deg,
+      transparent 0 12px,
+      rgb(17 17 15 / 10%) 12.5px 13px,
+      transparent 13.5px 31px
+    ),
+    repeating-linear-gradient(
+      94deg,
+      transparent 0 28px,
+      rgb(17 17 15 / 6%) 28.5px 29px,
+      transparent 29.5px 67px
+    );
+  opacity: 0.28;
+}
+
+@media (prefers-contrast: more) {
+  .paper-grain {
+    display: none;
+  }
 }

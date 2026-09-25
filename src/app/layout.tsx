@@ -1,9 +1,24 @@
 import type { Metadata } from "next";
+import { Geist, Instrument_Serif } from "next/font/google";
 import { SiteFooter, SiteHeader } from "@/components/navigation";
 import { MobileNavigation } from "@/components/navigation/mobile-navigation";
 import { SkipLink } from "@/components/ui";
+import { PaperGrain } from "@/components/visual/paper-grain";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-editorial",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -53,7 +68,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${geist.variable} ${instrumentSerif.variable}`}>
+        <PaperGrain />
         <SkipLink />
         <SiteHeader />
         <MobileNavigation />
