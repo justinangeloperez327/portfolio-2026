@@ -137,30 +137,46 @@ export default function HomePage() {
         </div>
 
         <div className="sumi-projects__list">
-          {featured.map((project, index) => (
-            <article className="sumi-project" key={project.slug}>
-              <Link className="sumi-project__visual" href={`/projects/${project.slug}`}>
-                <ProjectVisual slug={project.slug} />
-              </Link>
-              <div className="sumi-project__copy">
-                <div className="sumi-project__meta">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <span>{project.category}</span>
-                  <span>{project.status}</span>
-                </div>
-                <h3 className="project-name"><Link href={`/projects/${project.slug}`}>{project.name}</Link></h3>
-                <p>{project.summary}</p>
-                <div className="sumi-project__stack">
-                  {project.technologies.map((technology) => (
-                    <span key={technology}>{technology}</span>
-                  ))}
-                </div>
-                <Link className="sumi-text-link" href={`/projects/${project.slug}`}>
-                  Explore project ↗
+          {featured.map((project, index) => {
+            const mirrored = (index + 1) % 2 === 0;
+
+            return (
+              <article
+                className={`sumi-project sumi-project--landscape ${mirrored ? "sumi-project--mirrored" : ""}`}
+                key={project.slug}
+              >
+                <Link
+                  className="sumi-project__visual"
+                  href={`/projects/${project.slug}`}
+                  aria-label={`View ${project.name} project`}
+                >
+                  <ProjectVisual slug={project.slug} mirrored={mirrored} />
                 </Link>
-              </div>
-            </article>
-          ))}
+
+                <div className="sumi-project__overlay" aria-hidden="true" />
+
+                <div className="sumi-project__copy">
+                  <div className="sumi-project__meta">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <span>{project.category}</span>
+                    <span>{project.status}</span>
+                  </div>
+                  <h3 className="project-name">
+                    <Link href={`/projects/${project.slug}`}>{project.name}</Link>
+                  </h3>
+                  <p>{project.summary}</p>
+                  <div className="sumi-project__stack">
+                    {project.technologies.map((technology) => (
+                      <span key={technology}>{technology}</span>
+                    ))}
+                  </div>
+                  <Link className="sumi-text-link" href={`/projects/${project.slug}`}>
+                    Explore project ↗
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
