@@ -3594,3 +3594,94 @@ body {
     display: none;
   }
 }
+
+
+/* Sumi-e visual primitives */
+.ink-wash {
+  position: absolute;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse at 48% 52%,
+      rgb(17 17 15 / var(--ink-wash-alpha, 0.12)) 0%,
+      rgb(17 17 15 / calc(var(--ink-wash-alpha, 0.12) * 0.45)) 38%,
+      transparent 72%
+    );
+  filter: blur(var(--ink-wash-blur, 28px));
+  opacity: var(--ink-wash-opacity, 0.72);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  transform: rotate(var(--ink-wash-rotate, -4deg));
+}
+
+.ink-wash--sm {
+  width: clamp(12rem, 22vw, 20rem);
+  aspect-ratio: 1.35;
+}
+
+.ink-wash--md {
+  width: clamp(20rem, 36vw, 34rem);
+  aspect-ratio: 1.5;
+}
+
+.ink-wash--lg {
+  width: clamp(28rem, 52vw, 52rem);
+  aspect-ratio: 1.7;
+}
+
+.brush-divider {
+  width: min(36rem, 72vw);
+  height: 1.35rem;
+  color: var(--ink);
+  opacity: 0.22;
+}
+
+.brush-divider svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ink-reveal {
+  --ink-reveal-delay: 0ms;
+  --ink-reveal-duration: var(--duration-slow);
+  overflow: clip;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ink-reveal > * {
+    animation: ink-reveal var(--ink-reveal-duration) var(--ease-ink) var(--ink-reveal-delay) both;
+  }
+}
+
+.red-seal {
+  display: inline-grid;
+  width: 2.65rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--vermilion) 76%, transparent);
+  color: var(--vermilion);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  transform: rotate(-2deg);
+}
+
+.red-seal::before {
+  content: "";
+  position: absolute;
+}
+
+@keyframes ink-reveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transform: translateY(0.5rem) scale(1.01);
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    transform: translateY(0) scale(1);
+  }
+}
