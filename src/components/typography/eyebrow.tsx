@@ -6,5 +6,5 @@ type EyebrowProps = {
 };
 
 export function Eyebrow({ children, className = "" }: EyebrowProps) {
-  return <p className={`eyebrow ${className}`.trim()}>{children}</p>;
+  return <p className={`type-eyebrow ${className}`.trim()}>{children}</p>;
 }
