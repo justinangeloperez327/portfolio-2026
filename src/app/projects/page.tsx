@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ProjectVisual } from "@/components/project/project-visual";
+import { EditorialAccent } from "@/components/typography";
 import { BrushDivider, InkWash } from "@/components/visual";
 import { projects } from "@/data/projects";
 
@@ -21,7 +22,7 @@ export default function ProjectsPage() {
           <span>2026</span>
         </div>
         <div className="sumi-page-hero__grid">
-          <h1>Ideas turned<br />into <em>systems.</em></h1>
+          <h1 className="page-display">Ideas turned<br />into <EditorialAccent>systems.</EditorialAccent></h1>
           <p>
             Frameworks, language experiments, frontend tooling, and product work
             focused on architecture and developer experience.
@@ -41,7 +42,7 @@ export default function ProjectsPage() {
                 <span>{project.category}</span>
                 <span>{project.status}</span>
               </div>
-              <h2><Link href={`/projects/${project.slug}`}>{project.name}</Link></h2>
+              <h2 className="project-name"><Link href={`/projects/${project.slug}`}>{project.name}</Link></h2>
               <p>{project.summary}</p>
               <div className="sumi-project__stack">
                 {project.technologies.map((item) => <span key={item}>{item}</span>)}
