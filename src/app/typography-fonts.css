@@ -1,0 +1,107 @@
+/*
+ * Sumi-e typography font system.
+ *
+ * Inter carries interface and long-form reading.
+ * Shippori Mincho carries display hierarchy.
+ * Yuji Syuku is intentionally reserved for explicit brush accents.
+ */
+
+body {
+  --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
+  --font-display: var(--font-shippori), "Noto Serif JP", Georgia, "Times New Roman", serif;
+  --font-brush: var(--font-yuji), var(--font-shippori), "Noto Serif JP", serif;
+}
+
+/* Primary display hierarchy */
+.type-display,
+.identity-display,
+.page-display,
+.section-display,
+.project-name,
+.type-section-heading,
+.editorial-statement,
+.sumi-hero h1,
+.sumi-intro h2,
+.sumi-projects__heading h2,
+.sumi-principles h2,
+.sumi-contact h2,
+.sumi-project h3,
+.projects-index__copy h2,
+.sumi-page-hero h1,
+.about-v3-story h2,
+.about-v3-process h2,
+.contact-v3-guidance h2,
+.sumi-principles__list h3,
+.about-v3-principles h3,
+.about-v3-focus h3,
+.contact-v3-reasons article strong,
+.project-visual__copy strong,
+.case-hero__title h1,
+.case-section__content h2,
+.contact-v3-methods strong,
+.footer-title,
+.mobile-navigation a {
+  font-family: var(--font-display);
+}
+
+/* Preserve the calm Mincho treatment instead of pseudo-calligraphic italics. */
+.sumi-hero h1 em,
+.sumi-page-hero h1 em,
+.about-v3-process__heading em,
+.sumi-intro h2 em,
+.sumi-principles h2 em,
+.type-editorial-accent,
+.editorial-statement .type-editorial-accent,
+.page-display .type-editorial-accent {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* Interface, metadata, and reading text stay highly legible. */
+body,
+.type-eyebrow,
+.type-technical-label,
+.sumi-kicker,
+.sumi-section-index,
+.sumi-project__meta,
+.sumi-hero__meta,
+.sumi-hero__foot,
+.site-footer__eyebrow,
+.section-kicker,
+.case-section__index,
+.case-nav > span,
+.type-lede,
+.sumi-hero__lede,
+.type-prose,
+.type-prose p,
+.case-section__copy,
+.case-section__copy p,
+.sumi-project__copy > p,
+.projects-index__copy > p,
+.about-v3-story p,
+.about-v3-process p,
+.contact-v3-methods p,
+.contact-v3-guidance p,
+.project-visual__eyebrow,
+.project-visual__metrics,
+.project-visual__code,
+.sumi-project__stack,
+.about-v3-stack__list,
+.contact-v3-methods small,
+.primary-navigation,
+.site-footer,
+.sumi-actions,
+.sumi-text-link,
+.sumi-contact__grid {
+  font-family: var(--font-sans);
+}
+
+/* Explicit brush treatment only. Do not use this for navigation or body copy. */
+.sumi-brush,
+.type-brush-accent {
+  font-family: var(--font-brush);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+}
