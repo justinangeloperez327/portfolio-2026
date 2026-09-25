@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ProjectVisual } from "@/components/project/project-visual";
+import { EditorialAccent } from "@/components/typography";
 import { BrushDivider, InkMark, InkReveal, InkWash, RedSeal } from "@/components/visual";
 import { siteConfig } from "@/config/site";
 import { projects } from "@/data/projects";
@@ -59,22 +60,23 @@ export default function HomePage() {
         </div>
 
         <div className="sumi-hero__grid">
-          <InkReveal className="sumi-hero__copy">
+          <div className="sumi-hero__copy">
             <p className="sumi-kicker">Frameworks · Products · Developer tools</p>
-            <h1 id="home-title">
-              Justin Angelo
-              <br />
-              <em>Perez.</em>
-            </h1>
+            <InkReveal>
+              <h1 id="home-title" className="identity-display">
+                <span>Justin</span>
+                <span>Angelo Perez</span>
+              </h1>
+            </InkReveal>
             <p className="sumi-hero__lede">
-              I build software systems that make difficult engineering feel
-              clearer, faster, and easier to work with.
+              I build software systems that make difficult engineering clearer
+              and easier to work with.
             </p>
             <div className="sumi-actions">
               <Link href="/projects">View projects <span aria-hidden="true">↗</span></Link>
-              <Link href="/about">About me <span aria-hidden="true">↗</span></Link>
+              <Link href="/about">About <span aria-hidden="true">↗</span></Link>
             </div>
-          </InkReveal>
+          </div>
 
           <div className="sumi-hero__art" aria-hidden="true">
             <InkMark className="sumi-hero__mark" />
@@ -99,10 +101,11 @@ export default function HomePage() {
           <span>Philosophy</span>
         </div>
         <div className="sumi-intro__grid">
-          <h2>
+          <h2 className="editorial-statement">
             I like hard systems.
             <br />
-            I just don&apos;t think they should <em>feel hard.</em>
+            I just don&apos;t think they should{" "}
+            <EditorialAccent>feel hard.</EditorialAccent>
           </h2>
           <div>
             <p>
@@ -125,7 +128,7 @@ export default function HomePage() {
           <span>Selected Projects</span>
         </div>
         <div className="sumi-projects__heading">
-          <h2>Ideas turned into systems.</h2>
+          <h2 className="section-display">Ideas turned into systems.</h2>
           <Link className="sumi-text-link" href="/projects">All projects ↗</Link>
         </div>
 
@@ -141,7 +144,7 @@ export default function HomePage() {
                   <span>{project.category}</span>
                   <span>{project.status}</span>
                 </div>
-                <h3><Link href={`/projects/${project.slug}`}>{project.name}</Link></h3>
+                <h3 className="project-name"><Link href={`/projects/${project.slug}`}>{project.name}</Link></h3>
                 <p>{project.summary}</p>
                 <div className="sumi-project__stack">
                   {project.technologies.map((technology) => (
@@ -164,10 +167,10 @@ export default function HomePage() {
           <span>Engineering Philosophy</span>
         </div>
         <div className="sumi-principles__statement">
-          <h2>
+          <h2 className="editorial-statement editorial-statement--light">
             Complexity belongs
             <br />
-            <em>inside the system.</em>
+            <EditorialAccent>inside the system.</EditorialAccent>
           </h2>
           <p>
             The interface a developer touches should be deliberate, legible,
@@ -192,7 +195,7 @@ export default function HomePage() {
           <span>Contact</span>
         </div>
         <div className="sumi-contact__grid">
-          <h2>
+          <h2 className="section-display">
             Have something
             <br />
             difficult to build?
